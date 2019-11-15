@@ -17,7 +17,8 @@ class App extends React.Component {
       return (
         <>
           <h1 className="header">
-            <span>Fun</span> <span>with</span> <span>Flags</span>
+            <span className="header__fun">Fun</span> <span>with</span>{" "}
+            <span>Flags</span>
           </h1>
           <div>Loading...</div>
         </>
@@ -26,7 +27,8 @@ class App extends React.Component {
       return (
         <>
           <h1 className="header">
-            <span>Fun</span>with Flags
+            <span className="header__fun">Fun</span> <span>with</span>{" "}
+            <span>Flags</span>
           </h1>
           <Flag src={this.state.country.flag} sign={this.state.sign} />
           <UserInput

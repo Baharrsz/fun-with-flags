@@ -1,5 +1,20 @@
 * {
   margin: 10px 0;
+  font-family: "Courier New", Courier, monospace;
+}
+.header {
+  width: 70vw;
+  font-size: 60px;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px gray double;
+  text-shadow: 3px 3px 5px gray;
+
+  &__fun {
+    color: red;
+  }
 }
 
 .flags {
@@ -9,31 +24,46 @@
   margin-left: 5%;
   margin-right: 5%;
   &__img {
-    width: 90vw;
+    max-width: 60vw;
+    max-height: 60vh;
+    border: 1px solid lightgray;
   }
 }
 
 .input {
+  * {
+    font-size: 18px;
+    margin: 1% 1%;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+  }
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 1% 1%;
-  &__title {
-    margin: 1% 1%;
-  }
-  &__content {
-    border: 1px, black, solid;
-  }
-  &__submit {
-    margin: 1% 1%;
-  }
-  &__giveup {
-    margin: 1% 1%;
-  }
+  align-items: center;
 }
 
-.Score {
+.score {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 24px;
+
+  &__current-content,
+  &__total-content {
+    font-weight: bold;
+  }
+}
+// .score__current-content,
+// .score__total-content {
+//   font-weight: bold;
+// }
+button {
+  background-color: black;
+  color: lightgray;
+  border-radius: 4px;
+  padding: 10px;
 }
