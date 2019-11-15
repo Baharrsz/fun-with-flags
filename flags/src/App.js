@@ -13,10 +13,21 @@ class App extends React.Component {
     sign: 0
   };
   render() {
-    if (!this.state.country) return <div>Loading...</div>;
+    if (!this.state.country)
+      return (
+        <>
+          <h1 className="header">
+            <span>Fun</span> <span>with</span> <span>Flags</span>
+          </h1>
+          <div>Loading...</div>
+        </>
+      );
     else {
       return (
         <>
+          <h1 className="header">
+            <span>Fun</span>with Flags
+          </h1>
           <Flag src={this.state.country.flag} sign={this.state.sign} />
           <UserInput
             handleSubmit={this.handleInput}
