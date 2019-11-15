@@ -1,0 +1,39 @@
+* {
+  margin: 10px 0;
+}
+
+.flags {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  &__img {
+    width: 90vw;
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1% 1%;
+  &__title {
+    margin: 1% 1%;
+  }
+  &__content {
+    border: 1px, black, solid;
+  }
+  &__submit {
+    margin: 1% 1%;
+  }
+  &__giveup {
+    margin: 1% 1%;
+  }
+}
+
+.Score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
