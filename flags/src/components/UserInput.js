@@ -9,13 +9,13 @@ export default function UserInput(props) {
         <option className="input__select-option" value="dummy">
           Select a feature
         </option>
-        <option className="input__select-option" value="Continent">
+        <option className="input__select-option" value="continent">
           Continent
         </option>
-        <option className="input__select-option" value="Language">
+        <option className="input__select-option" value="languages">
           Language
         </option>
-        <option className="input__select-option" value="Currency">
+        <option className="input__select-option" value="currencies">
           Currency
         </option>
       </select>

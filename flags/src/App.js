@@ -88,7 +88,7 @@ class App extends React.Component {
           sign: 2
         });
       }
-    } else if (select === "Continent") {
+    } else if (select === "continent") {
       if (this.state.country[select] === submit.target.other.value)
         this.setState({
           sign: 1,
@@ -102,7 +102,12 @@ class App extends React.Component {
       }
     } else {
       this.state.country[select].forEach(value => {
-        if (value.name === submit.target.other.value) {
+        if (
+          value.name.toLowerCase() ===
+            submit.target.other.value.toLowerCase() ||
+          value.nativeName.toLowerCase() ===
+            submit.target.other.value.toLowerCase()
+        ) {
           this.setState({
             sign: 1,
             currentScore: this.state.currentScore - 5

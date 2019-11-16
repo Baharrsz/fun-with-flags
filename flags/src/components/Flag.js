@@ -2,9 +2,9 @@ import React from "react";
 
 function Answer(props) {
   if (props.sign === 1) {
-    return <div className="flags__answer">True</div>;
+    return <div className="flags__answer">That's correct!</div>;
   } else if (props.sign === 2)
-    return <div className="flags__answer">False</div>;
+    return <div className="flags__answer">Nope!</div>;
   else return <></>;
 }
 
