@@ -30,11 +30,16 @@ class App extends React.Component {
             <span className="header__fun">Fun</span> <span>with</span>{" "}
             <span>Flags</span>
           </h1>
-          <Flag src={this.state.country.flag} sign={this.state.sign} />
+          <Flag
+            src={this.state.country.flag}
+            sign={this.state.sign}
+            answer={this.state.country.name}
+            handleNext={this.handleNext}
+          />
           <UserInput
             handleSubmit={this.handleInput}
             handleGiveup={this.handleGiveup}
-            handleOther={this.handleOhter}
+            sign={this.state.sign}
           />
           <Score
             current={this.state.currentScore}
@@ -75,7 +80,10 @@ class App extends React.Component {
     let select = submit.target.select.value;
 
     if (select === "dummy") {
-      if (guessed.toLowerCase() === this.state.country.name.toLowerCase()) {
+      if (
+        guessed.toLowerCase() === this.state.country.name.toLowerCase() ||
+        guessed.toLowerCase() === this.state.country.nativeName.toLowerCase()
+      ) {
         this.setState({
           totalScore: this.state.totalScore + this.state.currentScore,
           currentScore: 100,
@@ -126,8 +134,14 @@ class App extends React.Component {
 
   handleGiveup = () => {
     this.setState({ totalScore: this.state.totalScore - 10 });
-    this.getCountry();
+    this.setState({ sign: 3 });
+  };
+
+  handleNext = click => {
+    click.preventDefault();
+    console.log("next");
     this.setState({ sign: 0 });
+    this.getCountry();
   };
 }
 
