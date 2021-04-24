@@ -1,16 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import Flag from "./components/Flag.js";
 import UserInput from "./components/UserInput";
 import Score from "./components/Score";
 
-class App extends React.Component {
+class App extends Component {
   state = {
     countriesArray: undefined,
     country: undefined,
     currentScore: 100,
     totalScore: 0,
-    sign: 0
+    sign: 0,
   };
   render() {
     if (!this.state.country) return <div>Loading...</div>;
@@ -37,11 +37,11 @@ class App extends React.Component {
     let country = this.state.countriesArray[index];
     axios
       .get(`https://restcountries.eu/rest/v2/name/${country.name}`)
-      .then(response => {
+      .then((response) => {
         country = response.data[0];
         console.log(country);
         this.setState({
-          country: country
+          country: country,
         });
       });
   };
@@ -49,14 +49,14 @@ class App extends React.Component {
   componentDidMount() {
     axios
       .get("https://restcountries.eu/rest/v2/all?fields=name")
-      .then(response => {
+      .then((response) => {
         let countriesArray = response.data;
         this.setState({ countriesArray: countriesArray });
         this.getCountry();
       });
   }
 
-  handleInput = submit => {
+  handleInput = (submit) => {
     submit.preventDefault();
     let guessed = submit.target.country.value;
     let select = submit.target.select.value;
@@ -66,38 +66,38 @@ class App extends React.Component {
         this.setState({
           totalScore: this.state.totalScore + this.state.currentScore,
           currentScore: 100,
-          sign: 1
+          sign: 1,
         });
         this.getCountry();
       } else {
         this.setState({
           currentScore: this.state.currentScore - 10,
-          sign: 2
+          sign: 2,
         });
       }
     } else if (select === "Continent") {
       if (this.state.country[select] === submit.target.other.value)
         this.setState({
           sign: 1,
-          currentScore: this.state.currentScore - 5
+          currentScore: this.state.currentScore - 5,
         });
       else {
         this.setState({
           sign: 2,
-          currentScore: this.state.currentScore - 5
+          currentScore: this.state.currentScore - 5,
         });
       }
     } else {
-      this.state.country[select].forEach(value => {
+      this.state.country[select].forEach((value) => {
         if (value.name === submit.target.other.value) {
           this.setState({
             sign: 1,
-            currentScore: this.state.currentScore - 5
+            currentScore: this.state.currentScore - 5,
           });
         } else {
           this.setState({
             sign: 2,
-            currentScore: this.state.currentScore - 5
+            currentScore: this.state.currentScore - 5,
           });
         }
       });
