@@ -76,8 +76,11 @@ class App extends Component {
           announce: "Nope!",
         });
       }
-    } else if (select === "Continent") {
-      if (this.state.country[select] === submit.target.other.value)
+    } else if (select === "continent") {
+      if (
+        this.state.country.region.toLowerCase() ===
+        submit.target.other.value.toLowerCase()
+      )
         this.setState({
           announce: "Yes",
           currentScore: this.state.currentScore - 5,
@@ -89,21 +92,23 @@ class App extends Component {
         });
       }
     } else {
-      this.state.country[select].forEach((value) => {
-        if (value.name === submit.target.other.value) {
-          this.setState({
-            announce: "Yes",
-            currentScore: this.state.currentScore - 5,
-          });
-        } else {
-          this.setState({
-            announce: "No",
-            currentScore: this.state.currentScore - 5,
-          });
-        }
-      });
+      if (
+        this.state.country[select].some(
+          (value) =>
+            value.name.toLowerCase() === submit.target.other.value.toLowerCase()
+        )
+      ) {
+        this.setState({
+          announce: "Yes",
+          currentScore: this.state.currentScore - 5,
+        });
+      } else {
+        this.setState({
+          announce: "No",
+          currentScore: this.state.currentScore - 5,
+        });
+      }
     }
-
     submit.target.reset();
   };
 
