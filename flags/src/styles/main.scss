@@ -9,13 +9,13 @@
   margin-left: 5%;
   margin-right: 5%;
   &__img {
-    width: 90vw;
+    width: 50vw;
   }
 }
 
 .input {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   margin: 1% 1%;
   &__title {

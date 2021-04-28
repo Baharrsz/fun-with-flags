@@ -10,14 +10,14 @@ class App extends Component {
     country: undefined,
     currentScore: 100,
     totalScore: 0,
-    announce: null,
+    sign: 0,
   };
   render() {
     if (!this.state.country) return <div>Loading...</div>;
     else {
       return (
         <>
-          <Flag src={this.state.country.flag} announce={this.state.announce} />
+          <Flag src={this.state.country.flag} sign={this.state.sign} />
           <UserInput
             handleSubmit={this.handleInput}
             handleGiveup={this.handleGiveup}
@@ -42,7 +42,6 @@ class App extends Component {
         console.log(country);
         this.setState({
           country: country,
-          announce: null,
         });
       });
   };
@@ -67,24 +66,24 @@ class App extends Component {
         this.setState({
           totalScore: this.state.totalScore + this.state.currentScore,
           currentScore: 100,
-          announce: "Yes!",
+          sign: 1,
         });
         this.getCountry();
       } else {
         this.setState({
           currentScore: this.state.currentScore - 10,
-          announce: "Nope!",
+          sign: 2,
         });
       }
     } else if (select === "Continent") {
       if (this.state.country[select] === submit.target.other.value)
         this.setState({
-          announce: "Yes",
+          sign: 1,
           currentScore: this.state.currentScore - 5,
         });
       else {
         this.setState({
-          announce: "No",
+          sign: 2,
           currentScore: this.state.currentScore - 5,
         });
       }
@@ -92,12 +91,12 @@ class App extends Component {
       this.state.country[select].forEach((value) => {
         if (value.name === submit.target.other.value) {
           this.setState({
-            announce: "Yes",
+            sign: 1,
             currentScore: this.state.currentScore - 5,
           });
         } else {
           this.setState({
-            announce: "No",
+            sign: 2,
             currentScore: this.state.currentScore - 5,
           });
         }
@@ -110,7 +109,7 @@ class App extends Component {
   handleGiveup = () => {
     this.setState({ totalScore: this.state.totalScore - 10 });
     this.getCountry();
-    this.setState({ announce: null });
+    this.setState({ sign: 0 });
   };
 }
 
