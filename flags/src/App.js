@@ -19,7 +19,7 @@ class App extends Component {
         <>
           <Flag src={this.state.country.flag} announce={this.state.announce} />
           <UserInput
-            handleSubmit={this.handleInput}
+            handleSubmit={this.handleSubmit}
             handleGiveup={this.handleGiveup}
             handleOther={this.handleOhter}
           />
@@ -30,6 +30,16 @@ class App extends Component {
         </>
       );
     }
+  }
+
+  componentDidMount() {
+    axios
+      .get("https://restcountries.eu/rest/v2/all?fields=name")
+      .then((response) => {
+        let countriesArray = response.data;
+        this.setState({ countriesArray: countriesArray });
+        this.getCountry();
+      });
   }
 
   getCountry = () => {
@@ -47,75 +57,134 @@ class App extends Component {
       });
   };
 
-  componentDidMount() {
-    axios
-      .get("https://restcountries.eu/rest/v2/all?fields=name")
-      .then((response) => {
-        let countriesArray = response.data;
-        this.setState({ countriesArray: countriesArray });
-        this.getCountry();
-      });
-  }
+  // handleInput = (submit) => {
+  //   submit.preventDefault();
+  //   let guessed = submit.target.country.value;
+  //   let select = submit.target.select.value;
 
-  handleInput = (submit) => {
+  //   if (select === "dummy") {
+  //     if (guessed.toLowerCase() === this.state.country.name.toLowerCase()) {
+  //       this.setState({
+  //         totalScore: this.state.totalScore + this.state.currentScore,
+  //         currentScore: 100,
+  //         announce: "Yes!",
+  //       });
+  //       this.getCountry();
+  //     } else {
+  //       this.setState({
+  //         currentScore: this.state.currentScore - 10,
+  //         announce: "Nope!",
+  //       });
+  //     }
+  //   } else if (select === "continent") {
+  //     if (
+  //       this.state.country.region.toLowerCase() ===
+  //       submit.target.other.value.toLowerCase()
+  //     )
+  //       this.setState({
+  //         announce: "Yes",
+  //         currentScore: this.state.currentScore - 5,
+  //       });
+  //     else {
+  //       this.setState({
+  //         announce: "No",
+  //         currentScore: this.state.currentScore - 5,
+  //       });
+  //     }
+  //   } else {
+  //     if (
+  //       this.state.country[select].some(
+  //         (value) =>
+  //           value.name.toLowerCase() === submit.target.other.value.toLowerCase()
+  //       )
+  //     ) {
+  //       this.setState({
+  //         announce: "Yes",
+  //         currentScore: this.state.currentScore - 5,
+  //       });
+  //     } else {
+  //       this.setState({
+  //         announce: "No",
+  //         currentScore: this.state.currentScore - 5,
+  //       });
+  //     }
+  //   }
+  //   submit.target.reset();
+  // };
+
+  handleSubmit = (submit) => {
     submit.preventDefault();
-    let guessed = submit.target.country.value;
-    let select = submit.target.select.value;
+    let type = submit.target.id;
+    const submitted = submit.target[type].value.toLowerCase();
 
-    if (select === "dummy") {
-      if (guessed.toLowerCase() === this.state.country.name.toLowerCase()) {
-        this.setState({
+    switch (type) {
+      case "country":
+        this.handleMainGuess(submitted);
+        break;
+      case "continent":
+        this.handleFeatureGuess("continent", submitted);
+        break;
+      case "language":
+        this.handleFeatureGuess("languages", submitted);
+        break;
+      case "currency":
+        this.handleFeatureGuess("currencies", submitted);
+        break;
+
+      default:
+        console.log("Something wrong with submission");
+    }
+
+    submit.target.reset();
+  };
+
+  handleMainGuess = (submitted) => {
+    if (submitted === this.state.country.name.toLowerCase()) {
+      this.setState(
+        {
           totalScore: this.state.totalScore + this.state.currentScore,
           currentScore: 100,
           announce: "Yes!",
-        });
-        this.getCountry();
-      } else {
-        this.setState({
-          currentScore: this.state.currentScore - 10,
-          announce: "Nope!",
-        });
-      }
-    } else if (select === "continent") {
-      if (
-        this.state.country.region.toLowerCase() ===
-        submit.target.other.value.toLowerCase()
-      )
-        this.setState({
-          announce: "Yes",
-          currentScore: this.state.currentScore - 5,
-        });
-      else {
-        this.setState({
-          announce: "No",
-          currentScore: this.state.currentScore - 5,
-        });
-      }
-    } else {
-      if (
-        this.state.country[select].some(
-          (value) =>
-            value.name.toLowerCase() === submit.target.other.value.toLowerCase()
-        )
-      ) {
-        this.setState({
-          announce: "Yes",
-          currentScore: this.state.currentScore - 5,
-        });
-      } else {
-        this.setState({
-          announce: "No",
-          currentScore: this.state.currentScore - 5,
-        });
-      }
-    }
-    submit.target.reset();
+        },
+        () => {
+          setTimeout(this.getCountry, 500);
+        }
+      );
+    } else
+      this.setState({
+        currentScore: this.state.currentScore - 10,
+        announce: "Nope!",
+      });
+  };
+
+  handleFeatureGuess = (type, submitted) => {
+    this.setState({ currentScore: this.state.currentScore - 5 });
+    const isCorrect =
+      type === "continent"
+        ? submitted === this.state.country.region.toLowerCase()
+        : this.state.country[type].some(
+            (value) => value.name.toLowerCase() === submitted
+          );
+
+    if (isCorrect) {
+      this.setState({
+        announce: "Yes",
+      });
+    } else
+      this.setState({
+        announce: "No",
+      });
   };
 
   handleGiveup = () => {
     this.setState({ totalScore: this.state.totalScore - 10 });
     this.getCountry();
-    this.setState({ announce: null });
+  };
+
+  changeCurrentScore = (increment) => {
+    this.setState((state) => ({
+      currentScore: state.currentScore - increment,
+    }));
   };
 }
 
