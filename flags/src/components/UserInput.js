@@ -11,13 +11,22 @@ export default class UserInput extends Component {
           sectionType="subsection"
           handleSubmit={this.props.handleSubmit}
         />
+
         <FeaturesInstructionSection handleClick={this.displaySection} />
+
         <FeaturesGuessSection
           display={this.state.features}
           handleSubmit={this.props.handleSubmit}
         />
+
         <OptionsInstructionSection handleClick={this.displaySection} />
-        <OptionsGuessSection display={this.state.options} />
+
+        <OptionsGuessSection
+          display={this.state.options}
+          handleSubmit={this.props.handleSubmit}
+          country={this.props.country}
+          countriesArray={this.props.countriesArray}
+        />
 
         <button
           className="input__givup"
@@ -103,7 +112,7 @@ function RadioOptions({ type, optionNames, handleSubmit }) {
     <label className="input__title input__text" key={idx}>
       <input
         type="radio"
-        name="continent"
+        name={`${type}-options`}
         className="input__radio"
         value={option}
       />
@@ -113,8 +122,8 @@ function RadioOptions({ type, optionNames, handleSubmit }) {
 
   return (
     <form
-      className="input__form input__form--continent input__subsection"
-      id="continent"
+      className={`input__form input__form--${type}-options input__subsection`}
+      id={`${type}-options`}
       onSubmit={handleSubmit}
     >
       <label className="input__title input__text">Choose the {type}</label>
@@ -136,15 +145,34 @@ function OptionsInstructionSection({ handleClick }) {
       >
         Select from 5 options
       </button>
+      <p className="input__text">(You will lose 20 points)</p>
     </div>
   );
 }
-function OptionsGuessSection({ display, handleSubmit }) {
+
+function OptionsGuessSection(props) {
+  const { display, handleSubmit, country, countriesArray } = props;
+  const optionNames = produceOptions(country, countriesArray);
+
   return !display ? (
     <></>
   ) : (
-    <form className="input__section" name="options" onSubmit={handleSubmit}>
-      <button className="input__submitBtn"> {">"} </button>
-    </form>
+    <RadioOptions
+      type="country"
+      optionNames={optionNames}
+      handleSubmit={handleSubmit}
+    />
   );
+}
+
+function produceOptions(country, countriesArray) {
+  let options = [country.name];
+  for (let i = 1; i <= 4; i++) {
+    const random = Math.floor(Math.random() * countriesArray.length);
+    if (!options.includes(countriesArray[random].name))
+      options.unshift(countriesArray[random].name);
+  }
+  const random = Math.floor(Math.random() * 3);
+  [options[4], options[random]] = [options[random], options[4]];
+  return options;
 }

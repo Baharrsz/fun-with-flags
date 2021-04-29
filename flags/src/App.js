@@ -21,7 +21,8 @@ class App extends Component {
           <UserInput
             handleSubmit={this.handleSubmit}
             handleGiveup={this.handleGiveup}
-            handleOther={this.handleOhter}
+            country={this.state.country}
+            countriesArray={this.state.countriesArray}
           />
           <Score
             current={this.state.currentScore}
@@ -115,20 +116,28 @@ class App extends Component {
   handleSubmit = (submit) => {
     submit.preventDefault();
     let type = submit.target.id;
+
+    //Forms with radio buttons have '-options' in the id (to separate country from country-options)
     const submitted = submit.target[type].value.toLowerCase();
 
     switch (type) {
       case "country":
-        this.handleMainGuess(submitted);
+        this.handleFinalGuess(submitted, false);
         break;
-      case "continent":
+      case "continent-options":
         this.handleFeatureGuess("continent", submitted);
         break;
+
       case "language":
         this.handleFeatureGuess("languages", submitted);
         break;
+
       case "currency":
         this.handleFeatureGuess("currencies", submitted);
+        break;
+
+      case "country-options":
+        this.handleFinalGuess(submitted, true);
         break;
 
       default:
@@ -138,7 +147,9 @@ class App extends Component {
     submit.target.reset();
   };
 
-  handleMainGuess = (submitted) => {
+  handleFinalGuess = (submitted, isMultipleAnswer) => {
+    const increment = isMultipleAnswer ? -20 : -10;
+
     if (submitted === this.state.country.name.toLowerCase()) {
       this.setState(
         {
@@ -152,7 +163,7 @@ class App extends Component {
       );
     } else
       this.setState({
-        currentScore: this.state.currentScore - 10,
+        currentScore: this.state.currentScore + increment,
         announce: "Nope!",
       });
   };
