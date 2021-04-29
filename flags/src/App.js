@@ -21,6 +21,7 @@ class App extends Component {
           <UserInput
             handleSubmit={this.handleSubmit}
             handleGiveup={this.handleGiveup}
+            handleReset={this.handleReset}
             country={this.state.country}
             countriesArray={this.state.countriesArray}
           />
@@ -58,66 +59,10 @@ class App extends Component {
       });
   };
 
-  // handleInput = (submit) => {
-  //   submit.preventDefault();
-  //   let guessed = submit.target.country.value;
-  //   let select = submit.target.select.value;
-
-  //   if (select === "dummy") {
-  //     if (guessed.toLowerCase() === this.state.country.name.toLowerCase()) {
-  //       this.setState({
-  //         totalScore: this.state.totalScore + this.state.currentScore,
-  //         currentScore: 100,
-  //         announce: "Yes!",
-  //       });
-  //       this.getCountry();
-  //     } else {
-  //       this.setState({
-  //         currentScore: this.state.currentScore - 10,
-  //         announce: "Nope!",
-  //       });
-  //     }
-  //   } else if (select === "continent") {
-  //     if (
-  //       this.state.country.region.toLowerCase() ===
-  //       submit.target.other.value.toLowerCase()
-  //     )
-  //       this.setState({
-  //         announce: "Yes",
-  //         currentScore: this.state.currentScore - 5,
-  //       });
-  //     else {
-  //       this.setState({
-  //         announce: "No",
-  //         currentScore: this.state.currentScore - 5,
-  //       });
-  //     }
-  //   } else {
-  //     if (
-  //       this.state.country[select].some(
-  //         (value) =>
-  //           value.name.toLowerCase() === submit.target.other.value.toLowerCase()
-  //       )
-  //     ) {
-  //       this.setState({
-  //         announce: "Yes",
-  //         currentScore: this.state.currentScore - 5,
-  //       });
-  //     } else {
-  //       this.setState({
-  //         announce: "No",
-  //         currentScore: this.state.currentScore - 5,
-  //       });
-  //     }
-  //   }
-  //   submit.target.reset();
-  // };
-
   handleSubmit = (submit) => {
     submit.preventDefault();
     let type = submit.target.id;
 
-    //Forms with radio buttons have '-options' in the id (to separate country from country-options)
     const submitted = submit.target[type].value.toLowerCase();
 
     switch (type) {
@@ -188,14 +133,16 @@ class App extends Component {
   };
 
   handleGiveup = () => {
-    this.setState({ totalScore: this.state.totalScore - 10 });
+    this.setState({
+      totalScore: this.state.totalScore - 10,
+      currentScore: 100,
+    });
     this.getCountry();
   };
 
-  changeCurrentScore = (increment) => {
-    this.setState((state) => ({
-      currentScore: state.currentScore - increment,
-    }));
+  handleReset = () => {
+    this.setState({ currentScore: 100, totalScore: 0 });
+    this.getCountry();
   };
 }
 

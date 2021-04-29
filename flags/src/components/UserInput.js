@@ -29,11 +29,19 @@ export default class UserInput extends Component {
         />
 
         <button
-          className="input__givup"
+          className="input__btn input__giveupBtn"
           type="button"
           onClick={this.props.handleGiveup}
         >
           Give Up!
+        </button>
+
+        <button
+          className="input__btn input__restBtn"
+          type="button"
+          onClick={this.props.handleReset}
+        >
+          Reset Game
         </button>
       </div>
     );
