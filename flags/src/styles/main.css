@@ -1,27 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500;700&display=swap");
 * {
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-#root {
-  width: 100vw;
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 .header {
   height: 30%;
   width: 100%;
+  padding: 0 10vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -32,35 +23,42 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: bisque;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 3, 56, 0.75)), to(rgba(0, 3, 56, 0.75))), url("../images/fun-with-flags.png");
+  background-image: linear-gradient(0deg, rgba(0, 3, 56, 0.75), rgba(0, 3, 56, 0.75)), url("../images/fun-with-flags.png");
+  background-size: cover;
+  font-family: "Amatic SC", cursive;
+  text-align: center;
+  color: whitesmoke;
+  letter-spacing: 1px;
+  font-weight: 700;
 }
 
-.flag {
-  height: 20%;
-  padding-top: 2%;
+.header__title {
+  font-family: "Press Start 2P", cursive;
+  text-shadow: 2px 2px grey;
 }
 
-.flag__announce {
-  height: 10%;
-  background-color: blue;
+.header__title__emphasis {
+  color: rgba(146, 23, 50, 0.986);
+  text-shadow: 3px 3px 10px #921732;
+  font-family: "Press Start 2P", cursive;
 }
 
-.flag__img {
-  height: 80%;
+.header__subtitle {
+  font-size: 1.6em;
+  padding: 1vh 0;
 }
 
-.score {
-  height: 5%;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+.header__instructions {
+  font-size: 1.1em;
+  font-weight: 300;
+}
+
+.header__instructions:last-child {
+  margin-bottom: 2%;
 }
 
 .input {
@@ -80,6 +78,8 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  font-family: "Comfortaa", cursive;
+  font-size: 0.8em;
 }
 
 .input__section {
@@ -131,5 +131,56 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.input__btn {
+  font-family: "Ubuntu", sans-serif;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flag {
+  height: 20%;
+}
+
+.flag__announce {
+  height: 20%;
+  padding: 2% 0;
+  font-family: "Monoton";
+  text-align: center;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.flag__img {
+  height: 80%;
+}
+
+.score {
+  height: 5%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-family: "Monoton";
+  font-size: 0.8em;
 }
 /*# sourceMappingURL=main.css.map */

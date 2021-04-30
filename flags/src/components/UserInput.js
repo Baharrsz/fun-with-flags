@@ -66,7 +66,7 @@ function GuessSection({ type, sectionType, handleSubmit }) {
         Guess the {type} <input className="input__content" name={type} />
       </label>
 
-      <button className="input__submitBtn"> {">"} </button>
+      <button className="input__submitBtn">►</button>
     </form>
   );
 }
@@ -81,7 +81,7 @@ function FeaturesInstructionSection({ handleClick }) {
         onClick={handleClick}
         name="features-btn"
       >
-        Use hints
+        Use hints ▼
       </button>
       <p className="input__text">
         Guess the continent, language or currency first.
@@ -136,7 +136,7 @@ function RadioOptions({ type, optionNames, handleSubmit }) {
     >
       <label className="input__title input__text">Choose the {type}: </label>
       {options}
-      <button className="input__submitBtn"> {">"} </button>
+      <button className="input__submitBtn">►</button>
     </form>
   );
 }
