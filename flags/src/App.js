@@ -3,6 +3,7 @@ import axios from "axios";
 import Flag from "./components/Flag.js";
 import UserInput from "./components/UserInput";
 import Score from "./components/Score";
+import Header from "./components/Header";
 
 class App extends Component {
   state = {
@@ -17,6 +18,7 @@ class App extends Component {
     else {
       return (
         <>
+          <Header />
           <Flag src={this.state.country.flag} announce={this.state.announce} />
           <UserInput
             handleSubmit={this.handleSubmit}
