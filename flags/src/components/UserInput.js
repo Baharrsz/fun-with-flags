@@ -117,7 +117,7 @@ function FeaturesGuessSection({ display, handleSubmit }) {
 
 function RadioOptions({ type, optionNames, handleSubmit }) {
   const options = optionNames.map((option, idx) => (
-    <label className="input__title input__text" key={idx}>
+    <label className="input__title input__text input__option" key={idx}>
       <input
         type="radio"
         name={`${type}-options`}
@@ -130,11 +130,11 @@ function RadioOptions({ type, optionNames, handleSubmit }) {
 
   return (
     <form
-      className={`input__form input__form--${type}-options input__subsection`}
+      className={`input__form input__form--options input__form--${type}-options input__subsection`}
       id={`${type}-options`}
       onSubmit={handleSubmit}
     >
-      <label className="input__title input__text">Choose the {type}</label>
+      <label className="input__title input__text">Choose the {type}: </label>
       {options}
       <button className="input__submitBtn"> {">"} </button>
     </form>
@@ -165,11 +165,13 @@ function OptionsGuessSection(props) {
   return !display ? (
     <></>
   ) : (
-    <RadioOptions
-      type="country"
-      optionNames={optionNames}
-      handleSubmit={handleSubmit}
-    />
+    <div className="input__section">
+      <RadioOptions
+        type="country"
+        optionNames={optionNames}
+        handleSubmit={handleSubmit}
+      />
+    </div>
   );
 }
 

@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Flag({ announce, src }) {
   return (
-    <div className="flags">
-      <div className="flags__answer">{announce}</div>
-      <img className="flags__img" src={src} alt="flag"></img>
+    <div className="flag">
+      <div className="flag__announce">{announce}</div>
+      <img className="flag__img" src={src} alt="flag"></img>
     </div>
   );
 }

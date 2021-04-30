@@ -5,7 +5,7 @@ export default function Header() {
     <div className="header">
       <h1 className="header__title">Fun With Flags</h1>
       <h3 className="header__subtitle">
-        Guess which counntry the flag represents.
+        Guess which country the flag represents.
       </h3>
       <p className="header__instructions">
         You have 100 points at each stage and will lose 10 points by each wrong

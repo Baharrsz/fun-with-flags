@@ -20,16 +20,16 @@ class App extends Component {
         <>
           <Header />
           <Flag src={this.state.country.flag} announce={this.state.announce} />
+          <Score
+            current={this.state.currentScore}
+            total={this.state.totalScore}
+          />
           <UserInput
             handleSubmit={this.handleSubmit}
             handleGiveup={this.handleGiveup}
             handleReset={this.handleReset}
             country={this.state.country}
             countriesArray={this.state.countriesArray}
-          />
-          <Score
-            current={this.state.currentScore}
-            total={this.state.totalScore}
           />
         </>
       );
