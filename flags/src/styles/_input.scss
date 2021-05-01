@@ -10,42 +10,52 @@
   font-size: 0.8em;
 
   &__section {
-    width: fit-content;
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1%;
+    justify-content: center;
+    padding: 1% 3%;
 
-    &--features {
-      border: 1px solid blue;
-    }
+    // &--features {
+    //   background-color: rgba(208, 242, 255, 0.5);
+    // }
   }
 
   &__subsection {
-    width: fit-content;
-    margin: 1% 0;
+    margin: 0.5vh 0;
 
     &--instructions {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 1%;
+      margin-bottom: 5%;
     }
   }
 
   &__form {
     display: flex;
     flex-direction: row;
-    justify-content: center;
 
     &--country {
       font-weight: 700;
       font-size: 1.2em;
+      background-color: rgba(208, 215, 255, 0.5);
+      box-shadow: 0 0 10px rgba(208, 215, 255, 0.5);
+
+      & input {
+        border: none;
+      }
     }
 
     &--options {
-      width: fit-content;
+      display: inline-flex;
     }
+  }
+
+  &__all-options {
+    display: flex;
+    flex-direction: row;
   }
 
   &__option {
@@ -54,11 +64,41 @@
     flex-direction: row;
   }
 
-  &__title {
-    width: fit-content;
+  &__radio {
+    margin-right: 10%;
+    margin-left: 20%;
+  }
+
+  &__box {
+    height: 2.5vh;
+    margin-right: 1vh;
+    border-radius: 3px;
+    border: 1px solid lightblue;
+  }
+
+  &__submitBtn {
+    width: 2.5vh;
+    height: 2.5vh;
   }
 
   &__btn {
     font-family: "Ubuntu", sans-serif;
+    padding: 0.5%;
+    margin: 0.5%;
+
+    &--expand {
+      width: 100%;
+      padding: 3%;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &__text--or {
+    font-family: "Freckle Face", cursive;
+    color: rgb(0, 183, 255);
+    font-size: 2em;
   }
 }

@@ -18,6 +18,11 @@ export default class OptionsSection extends Component {
     );
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.country !== this.props.country)
+      this.setState({ displayOptns: false });
+  }
+
   displaySection = () => {
     this.setState({ displayOptns: !this.state.displayOptns });
   };
@@ -25,10 +30,10 @@ export default class OptionsSection extends Component {
 
 function OptionsInstruction({ handleClick }) {
   return (
-    <div className="input__section">
-      <p className="input__text">OR</p>
+    <div className="input__subsection input__subsection--instructions">
+      <p className="input__text input__text--or">OR</p>
       <button
-        className="input__btn"
+        className="input__btn input__btn--expand"
         onClick={handleClick}
         name="options-btn"
         type="button"
@@ -47,7 +52,7 @@ function OptionsGuess(props) {
   return !display ? (
     <></>
   ) : (
-    <div className="input__section">
+    <div className="input__subsection">
       <Radio
         type="country"
         optionNames={optionNames}

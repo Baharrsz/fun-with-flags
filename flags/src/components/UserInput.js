@@ -28,7 +28,7 @@ export default function UserInput(props) {
       />
 
       <button
-        className="input__btn input__giveupBtn"
+        className="input__btn input__btn--giveup"
         type="button"
         onClick={handleGiveup}
       >
@@ -36,7 +36,7 @@ export default function UserInput(props) {
       </button>
 
       <button
-        className="input__btn input__restBtn"
+        className="input__btn input__btn--rest"
         type="button"
         onClick={handleReset}
       >
@@ -54,7 +54,7 @@ function GuessSection({ type, sectionType, handleSubmit }) {
       onSubmit={handleSubmit}
     >
       <label className="input__title input__text">
-        Guess the {type} <input className="input__content" name={type} />
+        Guess the {type}: <input className="input__box" name={type} />
       </label>
 
       <button className="input__submitBtn">►</button>
@@ -64,7 +64,7 @@ function GuessSection({ type, sectionType, handleSubmit }) {
 
 function Radio({ type, optionNames, handleSubmit }) {
   const options = optionNames.map((option, idx) => (
-    <label className="input__title input__text input__option" key={idx}>
+    <label className="input__text input__option" key={idx}>
       <input
         type="radio"
         name={`${type}-options`}
@@ -82,7 +82,8 @@ function Radio({ type, optionNames, handleSubmit }) {
       onSubmit={handleSubmit}
     >
       <label className="input__title input__text">Choose the {type}: </label>
-      {options}
+      <div className="input__all-options">{options}</div>
+
       <button className="input__submitBtn">►</button>
     </form>
   );

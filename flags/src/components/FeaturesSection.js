@@ -4,7 +4,7 @@ import { Radio, GuessSection } from "./UserInput";
 function FeaturesInstructions() {
   return (
     <div className="input__subsection input__subsection--instructions">
-      <p className="input__text">OR</p>
+      <p className="input__text input__text--or">OR</p>
       <p className="input__text">
         Guess the continent, language or currency first.
       </p>
