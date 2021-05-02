@@ -35,6 +35,8 @@ class App extends Component {
             handleSubmit={this.handleSubmit}
             handleGiveup={this.handleGiveup}
             handleReset={this.handleReset}
+            changeScore={this.changeCurrentScore}
+            seeOptionsScore={this.seeOptionsScore}
             country={this.state.country}
             countriesArray={this.state.countriesArray}
           />
@@ -102,9 +104,7 @@ class App extends Component {
   };
 
   handleFinalGuess = (submitted, isMultipleAnswer) => {
-    const increment = isMultipleAnswer
-      ? this.seeOptionsScore
-      : this.wrongGuessScore;
+    const increment = isMultipleAnswer ? 0 : this.wrongGuessScore;
 
     if (submitted === this.state.country.name.toLowerCase()) {
       this.setState(

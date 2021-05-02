@@ -9,6 +9,8 @@ export default function UserInput(props) {
     countriesArray,
     handleGiveup,
     handleReset,
+    changeScore,
+    seeOptionsScore,
   } = props;
 
   return (
@@ -25,6 +27,8 @@ export default function UserInput(props) {
         handleSubmit={handleSubmit}
         country={country}
         countriesArray={countriesArray}
+        changeScore={changeScore}
+        seeOptionsScore={seeOptionsScore}
       />
 
       <button

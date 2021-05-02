@@ -7,7 +7,7 @@ export default class OptionsSection extends Component {
   render() {
     return (
       <div className="input__section input__section--options">
-        <OptionsInstruction handleClick={this.displaySection} />
+        <OptionsInstruction handleClick={this.seeOptions} />
         <OptionsGuess
           display={this.state.displayOptns}
           handleSubmit={this.props.handleSubmit}
@@ -23,8 +23,11 @@ export default class OptionsSection extends Component {
       this.setState({ displayOptns: false });
   }
 
-  displaySection = () => {
-    this.setState({ displayOptns: !this.state.displayOptns });
+  seeOptions = () => {
+    if (!this.state.displayOptns) {
+      this.setState({ displayOptns: true });
+      this.props.changeScore(this.props.seeOptionsScore);
+    }
   };
 }
 
