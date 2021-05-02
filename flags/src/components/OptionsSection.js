@@ -7,10 +7,11 @@ export default class OptionsSection extends Component {
   render() {
     return (
       <div className="input__section input__section--options">
-        <OptionsInstruction handleClick={this.seeOptions} />
+        <OptionsInstruction handleClick={this.showOptions} />
         <OptionsGuess
           display={this.state.displayOptns}
           handleSubmit={this.props.handleSubmit}
+          hideOptions={this.hideOptions}
           country={this.props.country}
           countriesArray={this.props.countriesArray}
         />
@@ -23,12 +24,14 @@ export default class OptionsSection extends Component {
       this.setState({ displayOptns: false });
   }
 
-  seeOptions = () => {
+  showOptions = () => {
     if (!this.state.displayOptns) {
       this.setState({ displayOptns: true });
       this.props.changeScore(this.props.seeOptionsScore);
     }
   };
+
+  hideOptions = () => this.setState({ displayOptns: false });
 }
 
 function OptionsInstruction({ handleClick }) {
@@ -49,7 +52,7 @@ function OptionsInstruction({ handleClick }) {
 }
 
 function OptionsGuess(props) {
-  const { display, handleSubmit, country, countriesArray } = props;
+  const { display, handleSubmit, country, countriesArray, hideOptions } = props;
   const optionNames = produceOptions(country, countriesArray);
 
   return !display ? (
@@ -60,6 +63,7 @@ function OptionsGuess(props) {
         type="country"
         optionNames={optionNames}
         handleSubmit={handleSubmit}
+        hideOptions={hideOptions}
       />
     </div>
   );

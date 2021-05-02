@@ -66,7 +66,7 @@ function GuessSection({ type, sectionType, handleSubmit }) {
   );
 }
 
-function Radio({ type, optionNames, handleSubmit }) {
+function Radio({ type, optionNames, handleSubmit, hideOptions }) {
   const options = optionNames.map((option, idx) => (
     <label className="input__text input__option" key={idx}>
       <input
@@ -83,7 +83,13 @@ function Radio({ type, optionNames, handleSubmit }) {
     <form
       className={`input__form input__form--options input__form--${type}-options input__subsection`}
       id={`${type}-options`}
-      onSubmit={handleSubmit}
+      onSubmit={(submit) => {
+        submit.preventDefault();
+        handleSubmit(submit);
+        //For the case when component gets called from Options section.
+        //The time lapse is there so that the form isn't deleted before submission.
+        setTimeout(hideOptions, 50);
+      }}
     >
       <label className="input__title input__text">Choose the {type}: </label>
       <div className="input__all-options">{options}</div>
