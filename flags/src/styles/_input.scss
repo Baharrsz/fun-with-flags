@@ -50,28 +50,30 @@
 
     &--options {
       display: inline-flex;
+      overflow: hidden;
+      align-items: center;
     }
   }
 
-  &__all-options {
-    display: flex;
+  &__options-group {
+    display: inline-flex;
     flex-direction: row;
+    align-items: center;
   }
 
   &__option {
-    margin: 0 1%;
+    padding: 0 1vh;
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
 
   &__radio {
-    margin-right: 10%;
-    margin-left: 20%;
+    margin-right: 0.5vh;
   }
 
   &__box {
     height: 2.5vh;
-    margin-right: 1vh;
     border-radius: 3px;
     border: 1px solid lightblue;
   }
@@ -79,6 +81,7 @@
   &__submitBtn {
     width: 2.5vh;
     height: 2.5vh;
+    margin-left: 1vh;
   }
 
   &__btn {
