@@ -6,6 +6,13 @@ import Score from "./components/Score";
 import Header from "./components/Header";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.wrongGuessScore = -10;
+    this.useHintScore = -5;
+    this.seeOptionsScore = -20;
+  }
+
   state = {
     countriesArray: undefined,
     country: undefined,
@@ -95,7 +102,9 @@ class App extends Component {
   };
 
   handleFinalGuess = (submitted, isMultipleAnswer) => {
-    const increment = isMultipleAnswer ? -20 : -10;
+    const increment = isMultipleAnswer
+      ? this.seeOptionsScore
+      : this.wrongGuessScore;
 
     if (submitted === this.state.country.name.toLowerCase()) {
       this.setState(
@@ -116,7 +125,7 @@ class App extends Component {
   };
 
   handleFeatureGuess = (type, submitted) => {
-    this.setState({ currentScore: this.state.currentScore - 5 });
+    this.changeCurrentScore(this.useHintScore);
     const isCorrect =
       type === "continent"
         ? submitted === this.state.country.region.toLowerCase()
@@ -136,7 +145,7 @@ class App extends Component {
 
   handleGiveup = () => {
     this.setState({
-      totalScore: this.state.totalScore - 10,
+      totalScore: this.state.totalScore + this.useHintScore,
       currentScore: 100,
     });
     this.getCountry();
@@ -145,6 +154,12 @@ class App extends Component {
   handleReset = () => {
     this.setState({ currentScore: 100, totalScore: 0 });
     this.getCountry();
+  };
+
+  changeCurrentScore = (increment) => {
+    this.setState((state) => ({
+      currentScore: state.currentScore + increment,
+    }));
   };
 }
 
