@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Radio } from "./UserInput";
 
 export default class OptionsSection extends Component {
-  state = { displayOptns: false };
+  state = { displayOptns: false, optionsArr: [] };
 
   render() {
     return (
@@ -12,8 +12,7 @@ export default class OptionsSection extends Component {
           display={this.state.displayOptns}
           handleSubmit={this.props.handleSubmit}
           hideOptions={this.hideOptions}
-          country={this.props.country}
-          countriesArray={this.props.countriesArray}
+          optionsArr={this.state.optionsArr}
         />
       </div>
     );
@@ -26,7 +25,13 @@ export default class OptionsSection extends Component {
 
   showOptions = () => {
     if (!this.state.displayOptns) {
-      this.setState({ displayOptns: true });
+      this.setState({
+        displayOptns: true,
+        optionsArr: produceOptions(
+          this.props.country,
+          this.props.countriesArray
+        ),
+      });
       this.props.changeScore(this.props.seeOptionsScore);
     }
   };
@@ -52,8 +57,7 @@ function OptionsInstruction({ handleClick }) {
 }
 
 function OptionsGuess(props) {
-  const { display, handleSubmit, country, countriesArray, hideOptions } = props;
-  const optionNames = produceOptions(country, countriesArray);
+  const { display, handleSubmit, hideOptions, optionsArr } = props;
 
   return !display ? (
     <></>
@@ -61,7 +65,7 @@ function OptionsGuess(props) {
     <div className="input__subsection">
       <Radio
         type="country"
-        optionNames={optionNames}
+        optionNames={optionsArr}
         handleSubmit={handleSubmit}
         hideOptions={hideOptions}
       />
