@@ -29,7 +29,8 @@ export default class OptionsSection extends Component {
         displayOptns: true,
         optionsArr: produceOptions(
           this.props.country,
-          this.props.countriesArray
+          this.props.countriesArray,
+          this.state.optionsArr
         ),
       });
       this.props.changeScore(this.props.seeOptionsScore);
@@ -73,15 +74,29 @@ function OptionsGuess(props) {
   );
 }
 
-function produceOptions(country, countriesArray) {
+function produceOptions(country, countriesArray, currentOptions) {
   let options = [country.name];
-  for (let i = 1; i <= 4; i++) {
+
+  //Keeping one of the previous options so that guessing next time is harder
+  if (currentOptions.length > 0) {
+    let i = Math.floor(Math.random() * currentOptions.length);
+    if (i === currentOptions.indexOf(country))
+      i = (i + 1) % (currentOptions.length - 1);
+    options.unshift(currentOptions[i]);
+  }
+
+  //getting three or four new options
+  const len = options.length;
+  for (let i = 1; i <= 5 - len; i++) {
     const random = Math.floor(Math.random() * countriesArray.length);
     if (!options.includes(countriesArray[random])) {
       options.unshift(countriesArray[random]);
     } else i--;
   }
-  const random = Math.floor(Math.random() * 3);
+
+  //shuffling the answer
+  const random = Math.floor(Math.random() * 4);
   [options[4], options[random]] = [options[random], options[4]];
+
   return options;
 }

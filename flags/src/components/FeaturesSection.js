@@ -13,7 +13,7 @@ function FeaturesInstructions() {
   );
 }
 
-function FeaturesSection({ handleSubmit }) {
+function FeaturesSection({ handleSubmit, inputVal, handleInputChange }) {
   return (
     <div className="input__section input__section--features" name="features">
       <FeaturesInstructions />
@@ -26,11 +26,15 @@ function FeaturesSection({ handleSubmit }) {
         type="language"
         sectionType="subsection"
         handleSubmit={handleSubmit}
+        inputVal={inputVal.language}
+        handleInputChange={handleInputChange}
       />
       <GuessSection
         type="currency"
         sectionType="subsection"
         handleSubmit={handleSubmit}
+        inputVal={inputVal.currency}
+        handleInputChange={handleInputChange}
       />
     </div>
   );

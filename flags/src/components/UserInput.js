@@ -26,11 +26,15 @@ export default function UserInput(props) {
         sectionType="section"
         handleSubmit={handleSubmit}
         countriesArray={countriesArray}
-        inputVal={inputVal}
+        inputVal={inputVal.country}
         handleInputChange={handleInputChange}
       />
 
-      <FeaturesSection handleSubmit={handleSubmit} />
+      <FeaturesSection
+        handleSubmit={handleSubmit}
+        inputVal={inputVal}
+        handleInputChange={handleInputChange}
+      />
 
       <OptionsSection
         handleSubmit={handleSubmit}
@@ -87,7 +91,7 @@ function GuessSection(props) {
           spacer=""
           offsetY={15}
           value={inputVal}
-          onChange={handleInputChange}
+          onChange={(change) => handleInputChange(change, type)}
         />
       </label>
 

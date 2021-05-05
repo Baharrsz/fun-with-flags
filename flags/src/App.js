@@ -19,9 +19,16 @@ class App extends Component {
     currentScore: 100,
     totalScore: 0,
     announce: null,
-    inputVal: "",
+    countryInputVal: "",
+    languageInputVal: "",
+    currencyInputVal: "",
   };
   render() {
+    let inputValObj = {
+      country: this.state.countryInputVal,
+      language: this.state.languageInputVal,
+      currency: this.state.currencyInputVal,
+    };
     if (!this.state.country) return <div>Loading...</div>;
     else {
       return (
@@ -40,7 +47,7 @@ class App extends Component {
             seeOptionsScore={this.seeOptionsScore}
             country={this.state.country}
             countriesArray={this.state.countriesArray}
-            inputVal={this.state.inputVal}
+            inputVal={inputValObj}
             handleInputChange={this.handleInputChange}
           />
         </>
@@ -77,9 +84,13 @@ class App extends Component {
   handleSubmit = (submit) => {
     submit.preventDefault();
     let type = submit.target.id;
-
     const submitted = submit.target[type].value.toLowerCase();
 
+    //Clearing out the input field
+    if (type === "country" || type === "language" || type === "currency")
+      this.handleInputChange("", type);
+
+    //Adjusting the score and announcement
     switch (type) {
       case "country":
         this.handleFinalGuess(submitted, false);
@@ -104,7 +115,6 @@ class App extends Component {
         console.log("Something wrong with submission");
     }
 
-    this.setState({ inputVal: "" });
     submit.target.reset();
   };
 
@@ -130,6 +140,7 @@ class App extends Component {
   };
 
   handleFeatureGuess = (type, submitted) => {
+    //Adjust score
     this.changeCurrentScore(this.useHintScore);
     const isCorrect =
       type === "continent"
@@ -138,6 +149,7 @@ class App extends Component {
             (value) => value.name.toLowerCase() === submitted
           );
 
+    //Show announcement
     if (isCorrect) {
       this.setState({
         announce: "Yes",
@@ -152,18 +164,29 @@ class App extends Component {
     this.setState({
       totalScore: this.state.totalScore + this.useHintScore,
       currentScore: 100,
+      countryInputVal: "",
+      languageInputVal: "",
+      currencyInputVal: "",
     });
     this.getCountry();
   };
 
   handleReset = () => {
-    this.setState({ currentScore: 100, totalScore: 0 });
+    this.setState({
+      currentScore: 100,
+      totalScore: 0,
+      countryInputVal: "",
+      languageInputVal: "",
+      currencyInputVal: "",
+    });
     this.getCountry();
   };
 
-  handleInputChange = (change) => {
-    console.log(change);
-    this.setState({ inputVal: change });
+  handleInputChange = (change, type) => {
+    let key = `${type}InputVal`;
+    let obj = {};
+    obj[key] = change;
+    this.setState(obj);
   };
 
   changeCurrentScore = (increment) => {
