@@ -1,5 +1,6 @@
 import React from "react";
 import TextInput from "react-autocomplete-input";
+import Autocomplete from "react-autocomplete";
 import "react-autocomplete-input/dist/bundle.css";
 
 import FeaturesSection from "./FeaturesSection";
@@ -14,6 +15,8 @@ export default function UserInput(props) {
     handleReset,
     changeScore,
     seeOptionsScore,
+    inputVal,
+    handleInputChange,
   } = props;
 
   return (
@@ -23,6 +26,8 @@ export default function UserInput(props) {
         sectionType="section"
         handleSubmit={handleSubmit}
         countriesArray={countriesArray}
+        inputVal={inputVal}
+        handleInputChange={handleInputChange}
       />
 
       <FeaturesSection handleSubmit={handleSubmit} />
@@ -54,15 +59,25 @@ export default function UserInput(props) {
   );
 }
 
-function GuessSection({ type, sectionType, handleSubmit, countriesArray }) {
+function GuessSection(props) {
+  const {
+    type,
+    sectionType,
+    handleSubmit,
+    countriesArray,
+    inputVal,
+    handleInputChange,
+  } = props;
+
   return (
     <form
       className={`input__form input__${sectionType} input__${sectionType}--${type}`}
       id={`${type}`}
       onSubmit={handleSubmit}
+      autoComplete="off"
     >
       <label className="input__title input__text">
-        Guess the {type}:{/* <input name={type} /> */}
+        Guess the {type}:
         <TextInput
           name={type}
           options={countriesArray}
@@ -70,6 +85,9 @@ function GuessSection({ type, sectionType, handleSubmit, countriesArray }) {
           trigger=""
           matchAny={true}
           spacer=""
+          offsetY={15}
+          value={inputVal}
+          onChange={handleInputChange}
         />
       </label>
 

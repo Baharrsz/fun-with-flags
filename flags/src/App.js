@@ -19,6 +19,7 @@ class App extends Component {
     currentScore: 100,
     totalScore: 0,
     announce: null,
+    inputVal: "",
   };
   render() {
     if (!this.state.country) return <div>Loading...</div>;
@@ -39,6 +40,8 @@ class App extends Component {
             seeOptionsScore={this.seeOptionsScore}
             country={this.state.country}
             countriesArray={this.state.countriesArray}
+            inputVal={this.state.inputVal}
+            handleInputChange={this.handleInputChange}
           />
         </>
       );
@@ -101,6 +104,7 @@ class App extends Component {
         console.log("Something wrong with submission");
     }
 
+    this.setState({ inputVal: "" });
     submit.target.reset();
   };
 
@@ -155,6 +159,11 @@ class App extends Component {
   handleReset = () => {
     this.setState({ currentScore: 100, totalScore: 0 });
     this.getCountry();
+  };
+
+  handleInputChange = (change) => {
+    console.log(change);
+    this.setState({ inputVal: change });
   };
 
   changeCurrentScore = (increment) => {

@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "react": "^16.12.0",
+    "react-autocomplete": "^1.8.1",
     "react-autocomplete-input": "^1.0.18",
     "react-dom": "^16.12.0",
     "react-scripts": "^4.0.3"

@@ -77,8 +77,9 @@ function produceOptions(country, countriesArray) {
   let options = [country.name];
   for (let i = 1; i <= 4; i++) {
     const random = Math.floor(Math.random() * countriesArray.length);
-    if (!options.includes(countriesArray[random]))
+    if (!options.includes(countriesArray[random])) {
       options.unshift(countriesArray[random]);
+    } else i--;
   }
   const random = Math.floor(Math.random() * 3);
   [options[4], options[random]] = [options[random], options[4]];

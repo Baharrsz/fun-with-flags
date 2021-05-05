@@ -1,17 +1,17 @@
 .input {
-  height: 45%;
-  width: 100%;
-  padding: 1% 2%;
+  height: 45vh;
+  width: 100vw;
+  padding: 0 $input-padding;
 
   display: grid;
-  grid-template-rows: 1fr 3fr 1fr;
-  grid-template-columns: 49vw 49vw;
+  grid-template-rows: 1fr 3.5fr 0.5fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "main main"
     "features options"
     "btns btns";
-  column-gap: 2vw;
-  row-gap: 1vh;
+  column-gap: $column-gap;
+  row-gap: $row-gap;
 
   justify-items: center;
 
@@ -20,15 +20,18 @@
 
   &__section {
     width: 100%;
+    height: 100%;
+    padding: 0 3%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 1% 3%;
+    justify-content: space-evenly;
 
     &--features,
     &--options {
       grid-area: features;
+
       border: 1px solid whitesmoke;
       border-radius: 2vw;
       box-shadow: 0 0 10px lightgrey;
@@ -40,10 +43,13 @@
 
     &--country {
       grid-area: main;
-      font-weight: 700;
-      font-size: 1.2em;
+      justify-content: center;
+
       background-color: rgba(208, 215, 255, 0.5);
       box-shadow: 0 0 10px rgba(208, 215, 255, 0.5);
+
+      font-weight: 700;
+      font-size: 1.2em;
 
       & input {
         border: none;
@@ -51,6 +57,8 @@
     }
 
     &--btns {
+      padding: 0;
+
       grid-area: btns;
       display: flex;
       flex-direction: row;
@@ -59,17 +67,15 @@
   }
 
   &__subsection {
-    margin: 0.5vh 0;
-
     &--instructions {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 5%;
     }
 
     &--options {
       width: 45vw;
+
       display: flex;
       align-items: center;
     }
@@ -109,9 +115,12 @@
   }
 
   &__submitBtn {
-    width: 2.5vh;
-    height: 2.5vh;
+    width: 3vh;
+    height: 3vh;
     margin-left: 1vh;
+
+    display: flex;
+    justify-content: center;
   }
 
   &__btn {
