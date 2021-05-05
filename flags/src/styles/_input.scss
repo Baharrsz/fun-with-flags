@@ -1,25 +1,61 @@
 .input {
   height: 45%;
   width: 100%;
-  padding-bottom: 2%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  padding: 1% 2%;
+
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-columns: 49vw 49vw;
+  grid-template-areas:
+    "main main"
+    "features options"
+    "btns btns";
+  column-gap: 2vw;
+  row-gap: 1vh;
+
+  justify-items: center;
+
   font-family: "Comfortaa", cursive;
   font-size: 0.8em;
 
   &__section {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 1% 3%;
 
-    // &--features {
-    //   background-color: rgba(208, 242, 255, 0.5);
-    // }
+    &--features,
+    &--options {
+      grid-area: features;
+      border: 1px solid whitesmoke;
+      border-radius: 2vw;
+      box-shadow: 0 0 10px lightgrey;
+    }
+
+    &--options {
+      grid-area: options;
+    }
+
+    &--country {
+      grid-area: main;
+      font-weight: 700;
+      font-size: 1.2em;
+      background-color: rgba(208, 215, 255, 0.5);
+      box-shadow: 0 0 10px rgba(208, 215, 255, 0.5);
+
+      & input {
+        border: none;
+      }
+    }
+
+    &--btns {
+      grid-area: btns;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
   }
 
   &__subsection {
@@ -31,40 +67,35 @@
       align-items: center;
       margin-bottom: 5%;
     }
+
+    &--options {
+      width: 45vw;
+      display: flex;
+      align-items: center;
+    }
   }
 
   &__form {
     display: flex;
     flex-direction: row;
-
-    &--country {
-      font-weight: 700;
-      font-size: 1.2em;
-      background-color: rgba(208, 215, 255, 0.5);
-      box-shadow: 0 0 10px rgba(208, 215, 255, 0.5);
-
-      & input {
-        border: none;
-      }
-    }
-
-    &--options {
-      display: flex;
-      align-items: center;
-    }
   }
 
   &__options-group {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   &__option {
-    padding: 0 1vh;
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    padding: 0.5vw;
+
+    font-size: 0.9em;
   }
 
   &__radio {
@@ -98,9 +129,12 @@
     font-weight: 700;
   }
 
-  &__text--or {
-    font-family: "Freckle Face", cursive;
-    color: rgb(0, 183, 255);
-    font-size: 2em;
+  &__text {
+    text-align: center;
+    &--or {
+      font-family: "Freckle Face", cursive;
+      color: rgb(0, 183, 255);
+      font-size: 2em;
+    }
   }
 }

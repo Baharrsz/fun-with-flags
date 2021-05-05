@@ -1,4 +1,7 @@
 import React from "react";
+import TextInput from "react-autocomplete-input";
+import "react-autocomplete-input/dist/bundle.css";
+
 import FeaturesSection from "./FeaturesSection";
 import OptionsSection from "./OptionsSection";
 
@@ -19,6 +22,7 @@ export default function UserInput(props) {
         type="country"
         sectionType="section"
         handleSubmit={handleSubmit}
+        countriesArray={countriesArray}
       />
 
       <FeaturesSection handleSubmit={handleSubmit} />
@@ -30,35 +34,43 @@ export default function UserInput(props) {
         changeScore={changeScore}
         seeOptionsScore={seeOptionsScore}
       />
-
-      <button
-        className="input__btn input__btn--giveup"
-        type="button"
-        onClick={handleGiveup}
-      >
-        Give Up!
-      </button>
-
-      <button
-        className="input__btn input__btn--rest"
-        type="button"
-        onClick={handleReset}
-      >
-        Reset Game
-      </button>
+      <div className="input__btns input__section input__section--btns">
+        <button
+          className="input__btn input__btn--giveup"
+          type="button"
+          onClick={handleGiveup}
+        >
+          Give Up!
+        </button>
+        <button
+          className="input__btn input__btn--rest"
+          type="button"
+          onClick={handleReset}
+        >
+          Reset Game
+        </button>
+      </div>
     </div>
   );
 }
 
-function GuessSection({ type, sectionType, handleSubmit }) {
+function GuessSection({ type, sectionType, handleSubmit, countriesArray }) {
   return (
     <form
-      className={`input__form input__form--${type} input__${sectionType}`}
+      className={`input__form input__${sectionType} input__${sectionType}--${type}`}
       id={`${type}`}
       onSubmit={handleSubmit}
     >
       <label className="input__title input__text">
-        Guess the {type}: <input className="input__box" name={type} />
+        Guess the {type}:{/* <input name={type} /> */}
+        <TextInput
+          name={type}
+          options={countriesArray}
+          Component="input"
+          trigger=""
+          matchAny={true}
+          spacer=""
+        />
       </label>
 
       <button className="input__submitBtn">►</button>
@@ -81,7 +93,7 @@ function Radio({ type, optionNames, handleSubmit, hideOptions }) {
 
   return (
     <form
-      className={`input__form input__form--options input__form--${type}-options input__subsection`}
+      className={`input__form input__subsection input__subsection--options`}
       id={`${type}-options`}
       onSubmit={(submit) => {
         submit.preventDefault();

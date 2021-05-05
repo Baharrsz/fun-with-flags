@@ -49,7 +49,8 @@ class App extends Component {
     axios
       .get("https://restcountries.eu/rest/v2/all?fields=name")
       .then((response) => {
-        let countriesArray = response.data;
+        //response.data format [{name: country_name}]
+        let countriesArray = response.data.map((countryObj) => countryObj.name);
         this.setState({ countriesArray: countriesArray });
         this.getCountry();
       });
@@ -59,7 +60,7 @@ class App extends Component {
     let index = Math.floor(Math.random() * this.state.countriesArray.length);
     let country = this.state.countriesArray[index];
     axios
-      .get(`https://restcountries.eu/rest/v2/name/${country.name}`)
+      .get(`https://restcountries.eu/rest/v2/name/${country}`)
       .then((response) => {
         country = response.data[0];
         console.log(country);

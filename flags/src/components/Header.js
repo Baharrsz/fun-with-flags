@@ -10,8 +10,8 @@ export default function Header() {
         Guess which country the flag represents
       </h3>
       <p className="header__instructions">
-        You have 100 points at each stage and will lose 10 points by each wrong
-        guess. You'll go to next level when you guess right.
+        You have 100 points at each stage and will lose 10 points for every
+        wrong guess. You'll go to the next level when you guess right.
       </p>
       <p className="header__instructions">
         If you are sure of your guess, yet it's not correct, it might be because
