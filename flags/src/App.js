@@ -16,6 +16,7 @@ class App extends Component {
   state = {
     countriesArray: undefined,
     country: undefined,
+    guessed: [],
     currentScore: 100,
     totalScore: 0,
     announce: null,
@@ -67,8 +68,11 @@ class App extends Component {
   }
 
   getCountry = () => {
-    let index = Math.floor(Math.random() * this.state.countriesArray.length);
-    let country = this.state.countriesArray[index];
+    let country;
+    while (!country || this.state.guessed.indexOf(country) >= 0) {
+      let index = Math.floor(Math.random() * this.state.countriesArray.length);
+      country = this.state.countriesArray[index];
+    }
     axios
       .get(`https://restcountries.eu/rest/v2/name/${country}`)
       .then((response) => {
@@ -127,9 +131,12 @@ class App extends Component {
           totalScore: this.state.totalScore + this.state.currentScore,
           currentScore: 100,
           announce: "Yes!",
+          guessed: [...this.state.guessed, this.state.country.name],
         },
         () => {
           setTimeout(this.getCountry, 500);
+          if (this.state.guess.length === this.state.countriesArray.length)
+            this.setState({ guessed: [] });
         }
       );
     } else
@@ -178,6 +185,7 @@ class App extends Component {
       countryInputVal: "",
       languageInputVal: "",
       currencyInputVal: "",
+      guessed: [],
     });
     this.getCountry();
   };

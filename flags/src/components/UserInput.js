@@ -1,6 +1,5 @@
 import React from "react";
 import TextInput from "react-autocomplete-input";
-import Autocomplete from "react-autocomplete";
 import "react-autocomplete-input/dist/bundle.css";
 
 import FeaturesSection from "./FeaturesSection";

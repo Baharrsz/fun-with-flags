@@ -103,15 +103,15 @@ input {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
 }
 
 .input__section--features, .input__section--options {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: features;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   border: 1px solid whitesmoke;
   border-radius: 2vw;
   -webkit-box-shadow: 0 0 10px lightgrey;
@@ -122,6 +122,9 @@ input {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: options;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .input__section--country {
@@ -192,6 +195,9 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .input__options-group {
@@ -213,6 +219,7 @@ input {
 }
 
 .input__option {
+  padding: 0.5vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -220,10 +227,6 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0.5vw;
   font-size: 0.9em;
 }
 
@@ -247,6 +250,9 @@ input {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .input__btn {
@@ -269,6 +275,7 @@ input {
 }
 
 .input__text--or {
+  margin-top: 2vh;
   font-family: "Freckle Face", cursive;
   color: #00b7ff;
   font-size: 2em;
@@ -287,7 +294,7 @@ input {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(48, 187, 218, 0.577);
+  background-color: rgba(46, 149, 190, 0.577);
   background-image: url("../assets/simple-world-map-master/world-map.svg");
   background-size: contain;
   background-repeat: no-repeat;

@@ -44,14 +44,17 @@ function OptionsInstruction({ handleClick }) {
   return (
     <div className="input__subsection input__subsection--instructions">
       <p className="input__text input__text--or">OR</p>
+      <p className="input__text">
+        Guess the continent, language or currency first.
+      </p>
+      <p className="input__text">(You will lose 20 points)</p>
       <button
         className="input__btn input__btn--expand"
         onClick={handleClick}
         name="options-btn"
         type="button"
       >
-        Select from 5 options
-        <p className="input__text">(You will lose 20 points)</p>
+        Show Options
       </button>
     </div>
   );
