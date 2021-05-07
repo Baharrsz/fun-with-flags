@@ -1,0 +1,25 @@
+@keyframes announce-final {
+  from {
+    transform: scale(2);
+    opacity: 0.1;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes announce-feature {
+  0% {
+    transform: rotate(10deg);
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}

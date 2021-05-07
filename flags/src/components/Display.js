@@ -22,7 +22,7 @@ function Announce({ announce, announceClass, removeClass }) {
   return (
     <div
       className={`display__item announce ${announceClass}`}
-      onTransitionEnd={removeClass}
+      onAnimationEnd={removeClass}
     >
       {announce}
     </div>
@@ -32,7 +32,9 @@ function Announce({ announce, announceClass, removeClass }) {
 function Score({ score, type }) {
   return (
     <div className={`display__item score score--${type}`}>
-      <label className="score__label">{type.toUpperCase()} SCORE: </label>
+      <label className="score__label">
+        {type.toUpperCase()} SCORE:&nbsp;&nbsp;
+      </label>
       <span className="score__content">{score}</span>
     </div>
   );

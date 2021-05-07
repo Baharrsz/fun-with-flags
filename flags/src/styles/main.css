@@ -21,6 +21,62 @@ input {
   border: none;
 }
 
+@-webkit-keyframes announce-final {
+  from {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    opacity: 0.1;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes announce-final {
+  from {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    opacity: 0.1;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes announce-feature {
+  0% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  50% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@keyframes announce-feature {
+  0% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  50% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
 .header {
   height: 30vh;
   width: 100%;
@@ -105,12 +161,13 @@ input {
 }
 
 .announce__animation--final {
-  -webkit-transform: scale(2);
-          transform: scale(2);
-  -webkit-transition: -webkit-transform 2s ease-in;
-  transition: -webkit-transform 2s ease-in;
-  transition: transform 2s ease-in;
-  transition: transform 2s ease-in, -webkit-transform 2s ease-in;
+  -webkit-animation: announce-final 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s 1 normal none;
+          animation: announce-final 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s 1 normal none;
+}
+
+.announce__animation--feature {
+  -webkit-animation: announce-feature 0.5s ease-in-out 0s 1 alternate none;
+          animation: announce-feature 0.5s ease-in-out 0s 1 alternate none;
 }
 
 .flag {
@@ -123,15 +180,6 @@ input {
 }
 
 .score {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
   font-family: "Monoton";
   font-size: 0.8em;
 }

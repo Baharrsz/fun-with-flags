@@ -26,8 +26,12 @@
 
   &__animation {
     &--final {
-      transform: scale(2);
-      transition: transform 2s ease-in;
+      animation: announce-final 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s 1
+        normal none;
+    }
+
+    &--feature {
+      animation: announce-feature 0.5s ease-in-out 0s 1 alternate none;
     }
   }
 }
@@ -39,10 +43,6 @@
 }
 
 .score {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-
   font-family: "Monoton";
   font-size: 0.8em;
 
