@@ -1,27 +1,41 @@
 import React from "react";
 
 export default function Display(props) {
-  const { announce, src, announceClass, removeClass, current, total } = props;
+  const {
+    announce,
+    src,
+    announceClass,
+    removeAnnounceClass,
+    current,
+    total,
+    currentScoreClass,
+    removeScoreClass,
+  } = props;
 
   return (
     <div className="display">
       <Announce
         announce={announce}
-        announceClass={announceClass}
-        removeClass={removeClass}
+        extraClass={announceClass}
+        removeClass={removeAnnounceClass}
       />
       <img className="display__item flag" src={src} alt="flag"></img>
 
-      <Score score={current} type="current" />
+      <Score
+        score={current}
+        type="current"
+        extraClass={currentScoreClass}
+        removeClass={removeScoreClass}
+      />
       <Score score={total} type="total" />
     </div>
   );
 }
 
-function Announce({ announce, announceClass, removeClass }) {
+function Announce({ announce, extraClass, removeClass }) {
   return (
     <div
-      className={`display__item announce ${announceClass}`}
+      className={`display__item announce ${extraClass}`}
       onAnimationEnd={removeClass}
     >
       {announce}
@@ -29,9 +43,12 @@ function Announce({ announce, announceClass, removeClass }) {
   );
 }
 
-function Score({ score, type }) {
+function Score({ score, type, extraClass, removeClass }) {
   return (
-    <div className={`display__item score score--${type}`}>
+    <div
+      className={`display__item score score--${type} ${extraClass}`}
+      onAnimationEnd={removeClass}
+    >
       <label className="score__label">
         {type.toUpperCase()} SCORE:&nbsp;&nbsp;
       </label>
