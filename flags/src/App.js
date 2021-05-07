@@ -20,6 +20,7 @@ class App extends Component {
     currentScore: 100,
     totalScore: 0,
     announce: null,
+    announceClass: "",
     countryInputVal: "",
     languageInputVal: "",
     currencyInputVal: "",
@@ -35,22 +36,28 @@ class App extends Component {
       return (
         <>
           <Header />
-          <Flag src={this.state.country.flag} announce={this.state.announce} />
-          <Score
-            current={this.state.currentScore}
-            total={this.state.totalScore}
-          />
-          <UserInput
-            handleSubmit={this.handleSubmit}
-            handleGiveup={this.handleGiveup}
-            handleReset={this.handleReset}
-            changeScore={this.changeCurrentScore}
-            seeOptionsScore={this.seeOptionsScore}
-            country={this.state.country}
-            countriesArray={this.state.countriesArray}
-            inputVal={inputValObj}
-            handleInputChange={this.handleInputChange}
-          />
+          <div className="content">
+            <Flag
+              src={this.state.country.flag}
+              announce={this.state.announce}
+              announceClass={this.state.announceClass}
+            />
+            <Score
+              current={this.state.currentScore}
+              total={this.state.totalScore}
+            />
+            <UserInput
+              handleSubmit={this.handleSubmit}
+              handleGiveup={this.handleGiveup}
+              handleReset={this.handleReset}
+              changeScore={this.changeCurrentScore}
+              seeOptionsScore={this.seeOptionsScore}
+              country={this.state.country}
+              countriesArray={this.state.countriesArray}
+              inputVal={inputValObj}
+              handleInputChange={this.handleInputChange}
+            />
+          </div>
         </>
       );
     }
@@ -131,11 +138,12 @@ class App extends Component {
           totalScore: this.state.totalScore + this.state.currentScore,
           currentScore: 100,
           announce: "Yes!",
+          announceClass: "announce__animation--final announce__final--yes",
           guessed: [...this.state.guessed, this.state.country.name],
         },
         () => {
           setTimeout(this.getCountry, 500);
-          if (this.state.guess.length === this.state.countriesArray.length)
+          if (this.state.guessed.length === this.state.countriesArray.length)
             this.setState({ guessed: [] });
         }
       );
@@ -143,6 +151,7 @@ class App extends Component {
       this.setState({
         currentScore: this.state.currentScore + increment,
         announce: "Nope!",
+        announceClass: "announce__animation--final announce__final--no",
       });
   };
 
@@ -160,10 +169,12 @@ class App extends Component {
     if (isCorrect) {
       this.setState({
         announce: "Yes",
+        announceClass: "announce__animation--feature announce__feature--yes",
       });
     } else
       this.setState({
         announce: "No",
+        announceClass: "announce__animation--feature announce__feature--no",
       });
   };
 

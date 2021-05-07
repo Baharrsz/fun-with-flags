@@ -74,21 +74,23 @@ function GuessSection(props) {
 
   return (
     <form
-      className={`input__form input__${sectionType} input__${sectionType}--${type}`}
+      className={`input__form input__written-input input__${sectionType} input__${sectionType}--${type}`}
       id={`${type}`}
       onSubmit={handleSubmit}
       autoComplete="off"
     >
       <label className="input__title input__text">
-        Guess the {type}:
+        Guess the {type}:{" "}
         <TextInput
           name={type}
           options={countriesArray}
           Component="input"
           trigger=""
           matchAny={true}
+          maxOptions={10}
           spacer=""
           offsetY={15}
+          passThroughEnter={true}
           value={inputVal}
           onChange={(change) => handleInputChange(change, type)}
         />

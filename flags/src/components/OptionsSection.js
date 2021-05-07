@@ -83,8 +83,10 @@ function produceOptions(country, countriesArray, currentOptions) {
   //Keeping one of the previous options so that guessing next time is harder
   if (currentOptions.length > 0) {
     let i = Math.floor(Math.random() * currentOptions.length);
-    if (i === currentOptions.indexOf(country))
+
+    if (i === currentOptions.indexOf(country.name))
       i = (i + 1) % (currentOptions.length - 1);
+
     options.unshift(currentOptions[i]);
   }
 
