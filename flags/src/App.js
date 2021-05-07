@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Flag from "./components/Flag.js";
+import Display from "./components/Display";
 import UserInput from "./components/UserInput";
-import Score from "./components/Score";
 import Header from "./components/Header";
 
 class App extends Component {
@@ -37,15 +36,15 @@ class App extends Component {
         <>
           <Header />
           <div className="content">
-            <Flag
-              src={this.state.country.flag}
+            <Display
               announce={this.state.announce}
               announceClass={this.state.announceClass}
-            />
-            <Score
+              removeClass={this.removeClass}
+              src={this.state.country.flag}
               current={this.state.currentScore}
               total={this.state.totalScore}
             />
+
             <UserInput
               handleSubmit={this.handleSubmit}
               handleGiveup={this.handleGiveup}
@@ -138,7 +137,7 @@ class App extends Component {
           totalScore: this.state.totalScore + this.state.currentScore,
           currentScore: 100,
           announce: "Yes!",
-          announceClass: "announce__animation--final announce__final--yes",
+          announceClass: className("final", "yes"),
           guessed: [...this.state.guessed, this.state.country.name],
         },
         () => {
@@ -151,7 +150,7 @@ class App extends Component {
       this.setState({
         currentScore: this.state.currentScore + increment,
         announce: "Nope!",
-        announceClass: "announce__animation--final announce__final--no",
+        announceClass: className("final", "no"),
       });
   };
 
@@ -169,12 +168,12 @@ class App extends Component {
     if (isCorrect) {
       this.setState({
         announce: "Yes",
-        announceClass: "announce__animation--feature announce__feature--yes",
+        announceClass: className("feature", "yest"),
       });
     } else
       this.setState({
         announce: "No",
-        announceClass: "announce__animation--feature announce__feature--no",
+        announceClass: className("feature", "no"),
       });
   };
 
@@ -213,6 +212,15 @@ class App extends Component {
       currentScore: state.currentScore + increment,
     }));
   };
+
+  removeClass = () => {
+    let classList = this.state.announceClass.split(" ");
+    this.setState({ announceClass: classList[1] + " " + classList[2] });
+  };
+}
+
+function className(type, yOrN) {
+  return `announce__animation--${type} announce__${type} announce__${type}--${yOrN}`;
 }
 
 export default App;

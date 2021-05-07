@@ -38,6 +38,9 @@ input {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  background-image: url("../assets/header.png");
+  background-repeat: no-repeat;
+  background-size: contain;
   font-family: "Amatic SC", cursive;
   text-align: center;
   color: whitesmoke;
@@ -68,6 +71,81 @@ input {
 
 .header__instructions:last-child {
   margin-bottom: 2%;
+}
+
+.display {
+  height: 25vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 18vh 1fr;
+      grid-template-rows: 1fr 18vh 1fr;
+  -ms-grid-columns: 1fr auto 1fr;
+      grid-template-columns: 1fr auto 1fr;
+      grid-template-areas: "announce announce announce" "score-c flag score-t" ". . .";
+  -webkit-column-gap: 2vw;
+          column-gap: 2vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.announce {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: announce;
+  text-align: center;
+  font-family: "Monoton";
+  color: #f1ec9f;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.announce__final {
+  color: #f1e323;
+}
+
+.announce__animation--final {
+  -webkit-transform: scale(2);
+          transform: scale(2);
+  -webkit-transition: -webkit-transform 2s ease-in;
+  transition: -webkit-transform 2s ease-in;
+  transition: transform 2s ease-in;
+  transition: transform 2s ease-in, -webkit-transform 2s ease-in;
+}
+
+.flag {
+  height: 18vh;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: flag;
+  -webkit-box-shadow: 0 0 10px gray;
+          box-shadow: 0 0 10px gray;
+}
+
+.score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-family: "Monoton";
+  font-size: 0.8em;
+}
+
+.score--current {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: score-c;
+}
+
+.score--total {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: score-t;
 }
 
 ul.react-autocomplete-input {
@@ -328,53 +406,5 @@ ul.react-autocomplete-input > li {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.flag {
-  height: 20vh;
-}
-
-.flag__announce {
-  height: 20%;
-  padding: 2% 0;
-  text-align: center;
-  font-family: "Monoton";
-  color: #f1ec9f;
-  text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-}
-
-.flag__announce--final {
-  color: #f1e323;
-}
-
-.flag__animate--final {
-  -webkit-transform: scale(2);
-          transform: scale(2);
-  -webkit-transition: -webkit-transform 2s ease-in;
-  transition: -webkit-transform 2s ease-in;
-  transition: transform 2s ease-in;
-  transition: transform 2s ease-in, -webkit-transform 2s ease-in;
-}
-
-.flag__img {
-  height: 80%;
-  -webkit-box-shadow: 0 0 10px gray;
-          box-shadow: 0 0 10px gray;
-}
-
-.score {
-  height: 5vh;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  font-family: "Monoton";
-  font-size: 0.8em;
 }
 /*# sourceMappingURL=main.css.map */

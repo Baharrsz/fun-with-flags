@@ -1,0 +1,56 @@
+.display {
+  height: 25vh;
+
+  display: grid;
+  grid-template-rows: 1fr 18vh 1fr;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-areas:
+    "announce announce announce"
+    "score-c flag score-t"
+    ". . .";
+  column-gap: 2vw;
+  align-items: center;
+}
+
+.announce {
+  grid-area: announce;
+
+  text-align: center;
+  font-family: "Monoton";
+  color: rgb(241, 236, 159);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+
+  &__final {
+    color: rgba(241, 227, 35, 1);
+  }
+
+  &__animation {
+    &--final {
+      transform: scale(2);
+      transition: transform 2s ease-in;
+    }
+  }
+}
+
+.flag {
+  height: 18vh;
+  grid-area: flag;
+  box-shadow: 0 0 10px gray;
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  font-family: "Monoton";
+  font-size: 0.8em;
+
+  &--current {
+    grid-area: score-c;
+  }
+
+  &--total {
+    grid-area: score-t;
+  }
+}

@@ -1,5 +1,6 @@
 @import "./base";
 @import "./header";
+@import "./display";
 @import "./input";
 
 #root {
@@ -18,46 +19,4 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.flag {
-  height: 20vh;
-
-  &__announce {
-    height: 20%;
-    padding: 2% 0;
-
-    text-align: center;
-    font-family: "Monoton";
-    color: rgb(241, 236, 159);
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-
-    &--final {
-      color: rgba(241, 227, 35, 1);
-    }
-  }
-
-  &__animate {
-    &--final {
-      transform: scale(2);
-      transition: transform 2s ease-in;
-    }
-  }
-
-  &__img {
-    height: 80%;
-    box-shadow: 0 0 10px gray;
-  }
-}
-
-.score {
-  height: 5vh;
-  width: 100%;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-
-  font-family: "Monoton";
-  font-size: 0.8em;
 }
