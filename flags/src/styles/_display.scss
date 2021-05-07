@@ -2,12 +2,12 @@
   height: 25vh;
 
   display: grid;
-  grid-template-rows: 1fr 18vh 1fr;
+  grid-template-rows: 3vh $flag-half-height $flag-half-height;
   grid-template-columns: 1fr auto 1fr;
   grid-template-areas:
     "announce announce announce"
-    "score-c flag score-t"
-    ". . .";
+    ". flag score-c"
+    ". flag score-t";
   column-gap: 2vw;
   align-items: center;
   justify-items: center;
@@ -45,14 +45,33 @@
 
 .score {
   width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-self: end;
   font-family: "Monoton";
   font-size: 0.8em;
 
   &--current {
     grid-area: score-c;
+    align-self: end;
   }
 
   &--total {
     grid-area: score-t;
+  }
+
+  &__content {
+    display: block;
+  }
+
+  &__animation {
+    &--increment {
+      animation: score-increment 0.3s ease-in-out 0s 2 alternate none;
+    }
+
+    &--move {
+      animation: score-move 1s ease-in-out 0s 1 normal none;
+    }
   }
 }

@@ -23,3 +23,27 @@
     transform: rotate(0);
   }
 }
+
+@keyframes score-increment {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+    color: rgb(161, 62, 62);
+  }
+}
+
+@keyframes score-move {
+  from {
+    transform: translate(0);
+    color: rgb(161, 62, 62);
+  }
+
+  to {
+    transform: translate(0, calc(#{$flag-half-height} / 2));
+    color: rgb(161, 62, 62);
+    opacity: 0;
+  }
+}

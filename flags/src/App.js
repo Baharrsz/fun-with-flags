@@ -11,8 +11,8 @@ class App extends Component {
     this.useHintScore = -5;
     this.seeOptionsScore = -20;
     this.scoreClassName = [
-      "score__animation--current",
-      "score__animation--final",
+      "score__animation--increment",
+      "score__animation--move",
     ];
   }
 
@@ -23,6 +23,7 @@ class App extends Component {
     currentScore: 100,
     currentScoreClass: "",
     totalScore: 0,
+    totalScoreClass: "",
     announce: null,
     announceClass: "",
     countryInputVal: "",
@@ -48,8 +49,9 @@ class App extends Component {
               src={this.state.country.flag}
               current={this.state.currentScore}
               currentScoreClass={this.state.currentScoreClass}
-              removeScoreClass={this.removeScoreClass}
+              handleScoreAnimationStop={this.handleScoreAnimationStop}
               total={this.state.totalScore}
+              totalScoreClass={this.state.totalScoreClass}
             />
 
             <UserInput
@@ -94,7 +96,6 @@ class App extends Component {
         this.setState({
           country: country,
           announce: null,
-          totalScore: this.state.totalScore + this.state.currentScore,
           currentScore: 100,
         });
       });
@@ -139,10 +140,12 @@ class App extends Component {
 
   handleFinalGuess = (submitted, isMultipleAnswer) => {
     const increment = isMultipleAnswer ? 0 : this.wrongGuessScore;
+    const scoreClassName = isMultipleAnswer ? "" : this.scoreClassName[0];
 
     if (submitted === this.state.country.name.toLowerCase()) {
       this.setState(
         {
+          totalScore: this.state.totalScore + this.state.currentScore,
           currentScoreClass: this.scoreClassName[1],
           announce: "Yes!",
           announceClass: announceClassName("final", "yes"),
@@ -157,7 +160,7 @@ class App extends Component {
     } else
       this.setState({
         currentScore: this.state.currentScore + increment,
-        currentScoreClass: this.scoreClassName[0],
+        currentScoreClass: scoreClassName,
         announce: "Nope!",
         announceClass: announceClassName("final", "no"),
       });
@@ -226,6 +229,17 @@ class App extends Component {
   removeAnnounceClass = () => {
     let classList = this.state.announceClass.split(" ");
     this.setState({ announceClass: classList[1] + " " + classList[2] });
+  };
+
+  handleScoreAnimationStop = () => {
+    if (this.state.currentScoreClass.includes("move")) {
+      this.setState({
+        currentScoreClass: "",
+        totalScoreClass: this.scoreClassName[0],
+      });
+    } else if (this.state.currentScoreClass.includes("increment")) {
+      this.setState({ currentScoreClass: "" });
+    } else this.setState({ totalScoreClass: "" });
   };
 
   removeScoreClass = () => this.setState({ currentScoreClass: "" });

@@ -7,9 +7,10 @@ export default function Display(props) {
     announceClass,
     removeAnnounceClass,
     current,
-    total,
     currentScoreClass,
-    removeScoreClass,
+    total,
+    totalScoreClass,
+    handleScoreAnimationStop,
   } = props;
 
   return (
@@ -25,9 +26,14 @@ export default function Display(props) {
         score={current}
         type="current"
         extraClass={currentScoreClass}
-        removeClass={removeScoreClass}
+        handleAnimationStop={handleScoreAnimationStop}
       />
-      <Score score={total} type="total" />
+      <Score
+        score={total}
+        type="total"
+        extraClass={totalScoreClass}
+        handleAnimationStop={handleScoreAnimationStop}
+      />
     </div>
   );
 }
@@ -43,16 +49,18 @@ function Announce({ announce, extraClass, removeClass }) {
   );
 }
 
-function Score({ score, type, extraClass, removeClass }) {
+function Score({ score, type, extraClass, handleAnimationStop }) {
   return (
-    <div
-      className={`display__item score score--${type} ${extraClass}`}
-      onAnimationEnd={removeClass}
-    >
+    <div className={`display__item score score--${type}`}>
       <label className="score__label">
         {type.toUpperCase()} SCORE:&nbsp;&nbsp;
       </label>
-      <span className="score__content">{score}</span>
+      <span
+        className={`score__content ${extraClass}`}
+        onAnimationEnd={handleAnimationStop}
+      >
+        {score}
+      </span>
     </div>
   );
 }
