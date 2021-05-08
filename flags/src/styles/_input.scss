@@ -82,10 +82,12 @@ ul.react-autocomplete-input {
   }
 
   &__subsection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     &--instructions {
-      display: flex;
       flex-direction: column;
-      align-items: center;
     }
 
     &--options {
@@ -96,7 +98,7 @@ ul.react-autocomplete-input {
     }
 
     &--currency {
-      margin-bottom: 1vh;
+      margin-bottom: 3vh;
     }
   }
 
@@ -166,6 +168,8 @@ ul.react-autocomplete-input {
 
   &__text {
     text-align: center;
+    margin: 2% 0;
+
     &--or {
       margin-top: 1vh;
 

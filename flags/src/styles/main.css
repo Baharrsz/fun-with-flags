@@ -23,8 +23,8 @@ input {
 
 @-webkit-keyframes announce-final {
   from {
-    -webkit-transform: scale(2);
-            transform: scale(2);
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
     opacity: 0.1;
   }
   to {
@@ -36,8 +36,8 @@ input {
 
 @keyframes announce-final {
   from {
-    -webkit-transform: scale(2);
-            transform: scale(2);
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
     opacity: 0.1;
   }
   to {
@@ -426,17 +426,23 @@ ul.react-autocomplete-input > li {
           justify-content: center;
 }
 
-.input__subsection--instructions {
+.input__subsection {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.input__subsection--instructions {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .input__subsection--options {
@@ -450,7 +456,7 @@ ul.react-autocomplete-input > li {
 }
 
 .input__subsection--currency {
-  margin-bottom: 1vh;
+  margin-bottom: 3vh;
 }
 
 .input__written-input {
@@ -543,6 +549,7 @@ ul.react-autocomplete-input > li {
 
 .input__text {
   text-align: center;
+  margin: 2% 0;
 }
 
 .input__text--or {
