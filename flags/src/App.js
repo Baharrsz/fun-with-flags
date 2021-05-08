@@ -3,6 +3,7 @@ import axios from "axios";
 import Display from "./components/Display";
 import UserInput from "./components/UserInput";
 import Header from "./components/Header";
+import Celebration from "./components/Celebration";
 
 class App extends Component {
   constructor(props) {
@@ -10,10 +11,7 @@ class App extends Component {
     this.wrongGuessScore = -10;
     this.useHintScore = -5;
     this.seeOptionsScore = -20;
-    this.scoreClassName = [
-      "score__animation--increment",
-      "score__animation--move",
-    ];
+    this.animationClassName = ["animation--increment", "animation--move"];
   }
 
   state = {
@@ -29,6 +27,7 @@ class App extends Component {
     countryInputVal: "",
     languageInputVal: "",
     currencyInputVal: "",
+    countClass: "",
   };
   render() {
     let inputValObj = {
@@ -52,6 +51,8 @@ class App extends Component {
               handleScoreAnimationStop={this.handleScoreAnimationStop}
               total={this.state.totalScore}
               totalScoreClass={this.state.totalScoreClass}
+              count={this.state.guessed.length}
+              countClass={this.state.countClass}
             />
 
             <UserInput
@@ -66,6 +67,7 @@ class App extends Component {
               handleInputChange={this.handleInputChange}
             />
           </div>
+          <Celebration />
         </>
       );
     }
@@ -140,16 +142,19 @@ class App extends Component {
 
   handleFinalGuess = (submitted, isMultipleAnswer) => {
     const increment = isMultipleAnswer ? 0 : this.wrongGuessScore;
-    const scoreClassName = isMultipleAnswer ? "" : this.scoreClassName[0];
+    const animationClassName = isMultipleAnswer
+      ? ""
+      : this.animationClassName[0];
 
     if (submitted === this.state.country.name.toLowerCase()) {
       this.setState(
         {
           totalScore: this.state.totalScore + this.state.currentScore,
-          currentScoreClass: this.scoreClassName[1],
+          currentScoreClass: this.animationClassName[1],
           announce: "Yes!",
           announceClass: announceClassName("final", "yes"),
           guessed: [...this.state.guessed, this.state.country.name],
+          countClass: this.animationClassName[0],
         },
         () => {
           setTimeout(this.getCountry, 500);
@@ -160,7 +165,7 @@ class App extends Component {
     } else
       this.setState({
         currentScore: this.state.currentScore + increment,
-        currentScoreClass: scoreClassName,
+        currentScoreClass: animationClassName,
         announce: "Nope!",
         announceClass: announceClassName("final", "no"),
       });
@@ -222,7 +227,7 @@ class App extends Component {
   changeCurrentScore = (increment) => {
     this.setState((state) => ({
       currentScore: state.currentScore + increment,
-      currentScoreClass: this.scoreClassName[0],
+      currentScoreClass: this.animationClassName[0],
     }));
   };
 
@@ -231,15 +236,47 @@ class App extends Component {
     this.setState({ announceClass: classList[1] + " " + classList[2] });
   };
 
+  // handleScoreAnimationStop = () => {
+  //   //Game has finished and current score 'moved' and got added to total score
+  //   if (this.state.currentScoreClass.includes("move")) {
+  //     this.setState({
+  //       currentScoreClass: "",
+  //       totalScoreClass: this.animationClassName[0],
+  //     });
+  //     //In the middle of the game, current score got 'incremented'
+  //   } else if (this.state.currentScoreClass.includes("increment")) {
+  //     this.setState({ currentScoreClass: "" });
+
+  //     //Game has finished and total score and correct guesses got 'incremented'
+  //   } else if (this.state.totalScoreClass.includes("increment")) {
+  //     this.setState({ totalScoreClass: "", countClass: "" });
+
+  //     //Game has finished and correct guesses got 'incremented'
+  //   } else if (this.state.countClass.includes("increment")) {
+  //     this.setState({ });
+  //   } else console.log("This should not happen!");
+  // };
+
   handleScoreAnimationStop = () => {
+    //Game has finished and current score 'moved' and got added to total score
     if (this.state.currentScoreClass.includes("move")) {
       this.setState({
         currentScoreClass: "",
-        totalScoreClass: this.scoreClassName[0],
+        totalScoreClass: this.animationClassName[0],
       });
-    } else if (this.state.currentScoreClass.includes("increment")) {
+    }
+    //In the middle of the game, current score got 'incremented'
+    if (this.state.currentScoreClass.includes("increment")) {
       this.setState({ currentScoreClass: "" });
-    } else this.setState({ totalScoreClass: "" });
+    }
+    //Game has finished and total score and correct guesses got 'incremented'
+    if (this.state.totalScoreClass.includes("increment")) {
+      this.setState({ totalScoreClass: "", countClass: "" });
+    }
+    //Game has finished and correct guesses got 'incremented'
+    if (this.state.countClass.includes("increment")) {
+      this.setState({});
+    }
   };
 
   removeScoreClass = () => this.setState({ currentScoreClass: "" });

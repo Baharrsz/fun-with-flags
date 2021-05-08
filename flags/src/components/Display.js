@@ -11,6 +11,8 @@ export default function Display(props) {
     total,
     totalScoreClass,
     handleScoreAnimationStop,
+    count,
+    countClass,
   } = props;
 
   return (
@@ -24,14 +26,20 @@ export default function Display(props) {
 
       <Score
         score={current}
-        type="current"
+        type="current-score"
         extraClass={currentScoreClass}
         handleAnimationStop={handleScoreAnimationStop}
       />
       <Score
         score={total}
-        type="total"
+        type="total-score"
         extraClass={totalScoreClass}
+        handleAnimationStop={handleScoreAnimationStop}
+      />
+      <Score
+        score={count}
+        type="correct-guesses"
+        extraClass={countClass}
         handleAnimationStop={handleScoreAnimationStop}
       />
     </div>
@@ -53,10 +61,10 @@ function Score({ score, type, extraClass, handleAnimationStop }) {
   return (
     <div className={`display__item score score--${type}`}>
       <label className="score__label">
-        {type.toUpperCase()} SCORE:&nbsp;&nbsp;
+        {type.replace("-", " ").toUpperCase()}: &nbsp;&nbsp;
       </label>
       <span
-        className={`score__content ${extraClass}`}
+        className={`score__content score__${extraClass}`}
         onAnimationEnd={handleAnimationStop}
       >
         {score}
