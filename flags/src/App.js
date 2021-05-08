@@ -91,7 +91,12 @@ class App extends Component {
 
   getCountry = () => {
     let country;
-    while (!country || this.state.guessed.indexOf(country) >= 0) {
+    //The condition checks that a country is not selected twice (before all countries are guessed)
+    while (
+      !country ||
+      (this.state.guessed.length !== this.state.countriesArray &&
+        this.state.guessed.indexOf(country) >= 0)
+    ) {
       let index = Math.floor(Math.random() * this.state.countriesArray.length);
       country = this.state.countriesArray[index];
     }

@@ -25,7 +25,7 @@ input {
   from {
     -webkit-transform: scale(1.5);
             transform: scale(1.5);
-    opacity: 0.1;
+    opacity: 0.5;
   }
   to {
     -webkit-transform: scale(1);
@@ -38,7 +38,7 @@ input {
   from {
     -webkit-transform: scale(1.5);
             transform: scale(1.5);
-    opacity: 0.1;
+    opacity: 0.5;
   }
   to {
     -webkit-transform: scale(1);
@@ -49,12 +49,12 @@ input {
 
 @-webkit-keyframes announce-feature {
   0% {
-    -webkit-transform: rotate(10deg);
-            transform: rotate(10deg);
+    -webkit-transform: rotate(7deg);
+            transform: rotate(7deg);
   }
   50% {
-    -webkit-transform: rotate(-10deg);
-            transform: rotate(-10deg);
+    -webkit-transform: rotate(-7deg);
+            transform: rotate(-7deg);
   }
   100% {
     -webkit-transform: rotate(0);
@@ -64,12 +64,12 @@ input {
 
 @keyframes announce-feature {
   0% {
-    -webkit-transform: rotate(10deg);
-            transform: rotate(10deg);
+    -webkit-transform: rotate(7deg);
+            transform: rotate(7deg);
   }
   50% {
-    -webkit-transform: rotate(-10deg);
-            transform: rotate(-10deg);
+    -webkit-transform: rotate(-7deg);
+            transform: rotate(-7deg);
   }
   100% {
     -webkit-transform: rotate(0);
@@ -240,8 +240,8 @@ input {
 }
 
 .announce__animation--final {
-  -webkit-animation: announce-final 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s 1 normal none;
-          animation: announce-final 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s 1 normal none;
+  -webkit-animation: announce-final 0.5s ease-out 0s 1 normal none;
+          animation: announce-final 0.5s ease-out 0s 1 normal none;
 }
 
 .announce__animation--feature {
@@ -500,8 +500,25 @@ ul.react-autocomplete-input > li {
       flex-wrap: wrap;
 }
 
+.input__title {
+  font-weight: 700;
+}
+
+.input__text {
+  text-align: center;
+  margin: 2% 0;
+}
+
+.input__text--or {
+  margin-top: 1vh;
+  font-family: "Freckle Face", cursive;
+  color: #00b7ff;
+  font-size: 2em;
+}
+
 .input__option {
   padding: 0.5vw;
+  margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -540,23 +557,7 @@ ul.react-autocomplete-input > li {
 .input__btn--expand {
   width: 100%;
   padding: 3%;
-  margin-top: 1vh;
-}
-
-.input__title {
-  font-weight: 700;
-}
-
-.input__text {
-  text-align: center;
-  margin: 2% 0;
-}
-
-.input__text--or {
-  margin-top: 1vh;
-  font-family: "Freckle Face", cursive;
-  color: #00b7ff;
-  font-size: 2em;
+  margin: 2vh 0;
 }
 
 .celebration {

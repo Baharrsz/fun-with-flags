@@ -27,8 +27,7 @@
 
   &__animation {
     &--final {
-      animation: announce-final 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s 1
-        normal none;
+      animation: announce-final 0.5s ease-out 0s 1 normal none;
     }
 
     &--feature {
