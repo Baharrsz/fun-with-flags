@@ -12,6 +12,7 @@ class App extends Component {
     this.useHintScore = -5;
     this.seeOptionsScore = -20;
     this.animationClassName = ["animation--increment", "animation--move"];
+    this.newGameDelay = 2000;
   }
 
   state = {
@@ -29,6 +30,7 @@ class App extends Component {
     currencyInputVal: "",
     countClass: "",
     displayCelebration: false,
+    flagClass: "",
   };
   render() {
     let inputValObj = {
@@ -46,7 +48,6 @@ class App extends Component {
               announce={this.state.announce}
               announceClass={this.state.announceClass}
               removeAnnounceClass={this.removeAnnounceClass}
-              src={this.state.country.flag}
               current={this.state.currentScore}
               currentScoreClass={this.state.currentScoreClass}
               handleScoreAnimationStop={this.handleScoreAnimationStop}
@@ -54,6 +55,8 @@ class App extends Component {
               totalScoreClass={this.state.totalScoreClass}
               count={this.state.guessed.length}
               countClass={this.state.countClass}
+              src={this.state.country.flag}
+              flagClass={this.state.flagClass}
             />
 
             <UserInput
@@ -105,11 +108,16 @@ class App extends Component {
       .then((response) => {
         country = response.data[0];
         console.log(country);
-        this.setState({
-          country: country,
-          announce: null,
-          currentScore: 100,
-        });
+        setTimeout(
+          () =>
+            this.setState({
+              country: country,
+              announce: null,
+              currentScore: 100,
+              flagClass: "flag__animation--appear",
+            }),
+          this.newGameDelay
+        );
       });
   };
 
@@ -159,17 +167,20 @@ class App extends Component {
     if (submitted === this.state.country.name.toLowerCase()) {
       this.setState(
         {
-          totalScore: this.state.totalScore + this.state.currentScore,
           currentScoreClass: this.animationClassName[1],
           announce: "Yes!",
           announceClass: announceClassName("final", "yes"),
           guessed: [...this.state.guessed, this.state.country.name],
           countClass: this.animationClassName[0],
+          flagClass: "flag__animation--disappear",
         },
         () => {
-          setTimeout(this.getCountry, 500);
+          //Showing celebration if all countries have been played
           if (this.state.guessed.length === this.state.countriesArray.length)
             this.setState({ displayCelebration: true });
+
+          //Selecting a new country and starting a new game
+          this.getCountry();
         }
       );
     } else
@@ -255,6 +266,7 @@ class App extends Component {
     if (this.state.currentScoreClass.includes("move")) {
       this.setState({
         currentScoreClass: "",
+        totalScore: this.state.totalScore + this.state.currentScore,
         totalScoreClass: this.animationClassName[0],
       });
     }

@@ -3,7 +3,6 @@ import React from "react";
 export default function Display(props) {
   const {
     announce,
-    src,
     announceClass,
     removeAnnounceClass,
     current,
@@ -13,6 +12,8 @@ export default function Display(props) {
     handleScoreAnimationStop,
     count,
     countClass,
+    src,
+    flagClass,
   } = props;
 
   return (
@@ -22,7 +23,11 @@ export default function Display(props) {
         extraClass={announceClass}
         removeClass={removeAnnounceClass}
       />
-      <img className="display__item flag" src={src} alt="flag"></img>
+      <img
+        className={`display__item flag ${flagClass}`}
+        src={src}
+        alt="flag"
+      ></img>
 
       <Score
         score={current}

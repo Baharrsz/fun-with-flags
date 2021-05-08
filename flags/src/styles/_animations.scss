@@ -42,9 +42,9 @@
   }
 
   to {
-    transform: translate(0, calc(#{$flag-half-height} / 2));
+    transform: translate(0, calc(#{$flag-half-height} * 2));
     color: rgb(161, 62, 62);
-    opacity: 0;
+    opacity: 0.3;
   }
 }
 
@@ -57,5 +57,25 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes flag-appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes flag-disappear {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }

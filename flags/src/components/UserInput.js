@@ -48,7 +48,7 @@ export default function UserInput(props) {
           type="button"
           onClick={handleGiveup}
         >
-          Give Up!
+          Give Up
         </button>
         <button
           className="input__btn input__btn--rest"
