@@ -9,7 +9,12 @@
   width: 100vw;
   height: 100vh;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   background-color: rgba(46, 149, 190, 0.5);
+  font-family: "Comfortaa", cursive;
 }
 
 .content {

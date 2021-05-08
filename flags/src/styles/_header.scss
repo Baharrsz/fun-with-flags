@@ -1,5 +1,5 @@
 .header {
-  height: 30vh;
+  height: 35vh;
   width: 100%;
   padding: 0 10vw;
 
@@ -12,34 +12,59 @@
   background-repeat: no-repeat;
   background-size: contain;
 
-  font-family: "Amatic SC", cursive;
+  // font-family: "Amatic SC", cursive;
   text-align: center;
   color: whitesmoke;
   letter-spacing: 1px;
   font-weight: 700;
 
   &__title {
-    font-family: "Press Start 2P", cursive;
-    text-shadow: 2px 2px grey;
+    padding-top: 3vh;
 
-    &__emphasis {
-      color: rgba(146, 23, 50, 0.986);
-      text-shadow: 3px 3px 10px rgb(146, 23, 50);
-      font-family: "Press Start 2P", cursive;
+    display: flex;
+    flex-direction: row;
+
+    font-family: "Pangolin", cursive;
+    font-size: 2em;
+
+    & span {
+      display: block;
+      padding: 0 0.5vw;
+    }
+
+    &--fun {
+      color: $yellow;
+      transform: rotate(10deg);
+    }
+
+    &--with {
+      color: $red;
+      transform: rotate(-10deg);
+    }
+
+    &--flags {
+      color: $green;
+      transform: rotate(10deg);
     }
   }
 
   &__subtitle {
-    font-size: 1.6em;
     padding: 1vh 0;
+
+    color: rgb(230, 250, 250);
+    font-size: 1.8em;
+    font-weight: 700;
   }
 
   &__instructions {
-    font-size: 1.1em;
-    font-weight: 300;
+    width: 80%;
+    padding: 1vh 0;
 
-    &:last-child {
-      margin-bottom: 2%;
-    }
+    font-size: 1em;
+    font-weight: 500;
+  }
+
+  &__instruction {
+    padding: 5px 0;
   }
 }
