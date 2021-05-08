@@ -43,9 +43,11 @@ ul.react-autocomplete-input {
       grid-area: features;
       justify-content: space-between;
 
-      border: 1px solid whitesmoke;
+      border: 1px solid rgba(230, 230, 230, 0.35);
       border-radius: 2vw;
-      box-shadow: 0 0 10px lightgrey;
+
+      background-color: rgba(230, 230, 230, 0.35);
+      box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
     }
 
     &--options {
@@ -57,8 +59,9 @@ ul.react-autocomplete-input {
       grid-area: main;
       justify-content: center;
 
-      background-color: rgba(208, 215, 255, 0.5);
-      box-shadow: 0 0 10px rgba(208, 215, 255, 0.5);
+      border-radius: 1vh;
+      background-color: rgba(0, 135, 190, 0.25);
+      box-shadow: 0 0 10px rgba(0, 135, 190, 0.25);
 
       font-weight: 700;
       font-size: 1.2em;
@@ -133,12 +136,6 @@ ul.react-autocomplete-input {
 
   &__radio {
     margin-right: 0.5vh;
-  }
-
-  &__box {
-    height: 2.5vh;
-    border-radius: 3px;
-    border: 1px solid lightblue;
   }
 
   &__submitBtn {

@@ -28,6 +28,7 @@ class App extends Component {
     languageInputVal: "",
     currencyInputVal: "",
     countClass: "",
+    displayCelebration: false,
   };
   render() {
     let inputValObj = {
@@ -67,7 +68,11 @@ class App extends Component {
               handleInputChange={this.handleInputChange}
             />
           </div>
-          <Celebration />
+          <Celebration
+            display={this.state.displayCelebration}
+            resetGame={this.handleReset}
+            hideCelebration={this.hideCelebration}
+          />
         </>
       );
     }
@@ -159,7 +164,7 @@ class App extends Component {
         () => {
           setTimeout(this.getCountry, 500);
           if (this.state.guessed.length === this.state.countriesArray.length)
-            this.setState({ guessed: [] });
+            this.setState({ displayCelebration: true });
         }
       );
     } else
@@ -207,12 +212,16 @@ class App extends Component {
 
   handleReset = () => {
     this.setState({
-      currentScore: 100,
+      guessed: [],
+      currentScoreClass: "",
       totalScore: 0,
+      totalScoreClass: "",
+      announceClass: "",
       countryInputVal: "",
       languageInputVal: "",
       currencyInputVal: "",
-      guessed: [],
+      countClass: "",
+      displayCelebration: false,
     });
     this.getCountry();
   };
@@ -235,27 +244,6 @@ class App extends Component {
     let classList = this.state.announceClass.split(" ");
     this.setState({ announceClass: classList[1] + " " + classList[2] });
   };
-
-  // handleScoreAnimationStop = () => {
-  //   //Game has finished and current score 'moved' and got added to total score
-  //   if (this.state.currentScoreClass.includes("move")) {
-  //     this.setState({
-  //       currentScoreClass: "",
-  //       totalScoreClass: this.animationClassName[0],
-  //     });
-  //     //In the middle of the game, current score got 'incremented'
-  //   } else if (this.state.currentScoreClass.includes("increment")) {
-  //     this.setState({ currentScoreClass: "" });
-
-  //     //Game has finished and total score and correct guesses got 'incremented'
-  //   } else if (this.state.totalScoreClass.includes("increment")) {
-  //     this.setState({ totalScoreClass: "", countClass: "" });
-
-  //     //Game has finished and correct guesses got 'incremented'
-  //   } else if (this.state.countClass.includes("increment")) {
-  //     this.setState({ });
-  //   } else console.log("This should not happen!");
-  // };
 
   handleScoreAnimationStop = () => {
     //Game has finished and current score 'moved' and got added to total score
@@ -280,6 +268,8 @@ class App extends Component {
   };
 
   removeScoreClass = () => this.setState({ currentScoreClass: "" });
+
+  hideCelebration = () => this.setState({ displayCelebration: false });
 }
 
 function announceClassName(type, yOrN) {
