@@ -5,6 +5,8 @@ export default function Display(props) {
     announce,
     announceClass,
     removeAnnounceClass,
+    src,
+    flagClass,
     current,
     currentScoreClass,
     total,
@@ -12,8 +14,7 @@ export default function Display(props) {
     handleScoreAnimationStop,
     count,
     countClass,
-    src,
-    flagClass,
+    allGamesNum,
   } = props;
 
   return (
@@ -46,6 +47,7 @@ export default function Display(props) {
         type="correct-guesses"
         extraClass={countClass}
         handleAnimationStop={handleScoreAnimationStop}
+        allGamesNum={allGamesNum}
       />
     </div>
   );
@@ -62,11 +64,18 @@ function Announce({ announce, extraClass, removeClass }) {
   );
 }
 
-function Score({ score, type, extraClass, handleAnimationStop }) {
+function Score(props) {
+  let { score, type, extraClass, handleAnimationStop, allGamesNum } = props;
+  allGamesNum = allGamesNum ? (
+    <label className="score__label">&nbsp; of &nbsp;{allGamesNum}</label>
+  ) : (
+    <></>
+  );
+
   return (
     <div className={`display__item score score--${type}`}>
       <label className="score__label">
-        {type.replace("-", " ").toUpperCase()}: &nbsp;&nbsp;
+        {type.replace("-", " ").toUpperCase()} &nbsp;&nbsp;
       </label>
       <span
         className={`score__content score__${extraClass}`}
@@ -74,6 +83,7 @@ function Score({ score, type, extraClass, handleAnimationStop }) {
       >
         {score}
       </span>
+      {allGamesNum}
     </div>
   );
 }

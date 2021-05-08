@@ -48,6 +48,8 @@ class App extends Component {
               announce={this.state.announce}
               announceClass={this.state.announceClass}
               removeAnnounceClass={this.removeAnnounceClass}
+              src={this.state.country.flag}
+              flagClass={this.state.flagClass}
               current={this.state.currentScore}
               currentScoreClass={this.state.currentScoreClass}
               handleScoreAnimationStop={this.handleScoreAnimationStop}
@@ -55,8 +57,7 @@ class App extends Component {
               totalScoreClass={this.state.totalScoreClass}
               count={this.state.guessed.length}
               countClass={this.state.countClass}
-              src={this.state.country.flag}
-              flagClass={this.state.flagClass}
+              allGamesNum={this.state.countriesArray.length}
             />
 
             <UserInput
@@ -164,7 +165,14 @@ class App extends Component {
       ? ""
       : this.animationClassName[0];
 
-    if (submitted === this.state.country.name.toLowerCase()) {
+    //Checking if the submitted answer equals the country's name or alternative spellings
+    //(index 0 of altSpellings is excluded because it's a two letter representation of the country's name)
+    if (
+      submitted === this.state.country.name.toLowerCase() ||
+      this.state.country.altSpellings.some(
+        (spelling, idx) => idx !== 0 && submitted === spelling.toLowerCase()
+      )
+    ) {
       this.setState(
         {
           currentScoreClass: this.animationClassName[1],
