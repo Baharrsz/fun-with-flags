@@ -182,6 +182,9 @@ ul.react-autocomplete-input {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-image: url("../assets/enter-icon.svg");
+    background-size: cover;
   }
 
   &__btn {

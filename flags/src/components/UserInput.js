@@ -96,7 +96,7 @@ function GuessSection(props) {
         />
       </label>
 
-      <button className="input__submitBtn">►</button>
+      <button className="input__submitBtn"></button>
     </form>
   );
 }
@@ -129,7 +129,7 @@ function Radio({ type, optionNames, handleSubmit, hideOptions }) {
       <label className="input__title input__text">Choose the {type}: </label>
       <div className="input__options-group">{options}</div>
 
-      <button className="input__submitBtn">►</button>
+      <button className="input__submitBtn"></button>
     </form>
   );
 }
