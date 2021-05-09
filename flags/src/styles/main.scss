@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   font-family: "Comfortaa", cursive;
   font-weight: 700;
@@ -27,4 +28,15 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__text {
+    padding-top: 3vh;
+  }
 }

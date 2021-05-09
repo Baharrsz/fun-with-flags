@@ -4,6 +4,7 @@ import Display from "./components/Display";
 import UserInput from "./components/UserInput";
 import Header from "./components/Header";
 import Celebration from "./components/Celebration";
+import Loading from "./components/Loading";
 
 class App extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class App extends Component {
       language: this.state.languageInputVal,
       currency: this.state.currencyInputVal,
     };
-    if (!this.state.country) return <div>Loading...</div>;
+    if (!this.state.country) return <Loading />;
     else {
       return (
         <>

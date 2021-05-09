@@ -233,7 +233,7 @@ input {
       -ms-flex-direction: row;
           flex-direction: row;
   font-family: "Pangolin", cursive;
-  font-size: 3.2vw;
+  font-size: 5vh;
 }
 
 .header__title span {
@@ -262,13 +262,13 @@ input {
 .header__subtitle {
   padding: 1vh 0;
   color: #e6fafa;
-  font-size: 1.6vw;
+  font-size: 2.5vh;
   font-weight: 700;
 }
 
 .header__instructions {
   width: 80%;
-  font-size: 1vw;
+  font-size: 1.7vh;
   font-weight: 500;
 }
 
@@ -808,6 +808,9 @@ ul.react-autocomplete-input > li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-family: "Comfortaa", cursive;
   font-weight: 700;
   color: #5a5555;
@@ -828,5 +831,25 @@ ul.react-autocomplete-input > li {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.loading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loading__text {
+  padding-top: 3vh;
 }
 /*# sourceMappingURL=main.css.map */
