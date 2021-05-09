@@ -14,8 +14,8 @@ export default function Header() {
 
       <div className="header__instructions">
         <p className="header__instruction">
-          You have 100 points at each stage and will lose 10 points for every
-          wrong guess. You'll go to the next level when you guess right.
+          You have 100 points at each stage and will lose 10 points for each
+          wrong answer. You'll go to the next level when you guess correctly.
         </p>
         <p className="header__instruction">
           If you are sure of your guess, yet it's not correct, it might be

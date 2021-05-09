@@ -1,7 +1,8 @@
 .header {
-  height: 35vh;
+  height: 30vh;
   width: 100%;
   padding: 0 10vw;
+  overflow: scroll;
 
   display: flex;
   flex-direction: column;
@@ -19,13 +20,11 @@
   font-weight: 700;
 
   &__title {
-    padding-top: 3vh;
-
     display: flex;
     flex-direction: row;
 
     font-family: "Pangolin", cursive;
-    font-size: 2em;
+    font-size: 3.2vw;
 
     & span {
       display: block;
@@ -52,15 +51,14 @@
     padding: 1vh 0;
 
     color: rgb(230, 250, 250);
-    font-size: 1.8em;
+    font-size: 1.6vw;
     font-weight: 700;
   }
 
   &__instructions {
     width: 80%;
-    padding: 1vh 0;
 
-    font-size: 1em;
+    font-size: 1vw;
     font-weight: 500;
   }
 

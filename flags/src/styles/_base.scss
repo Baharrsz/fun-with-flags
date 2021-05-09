@@ -19,12 +19,18 @@ $red: rgb(240, 78, 64);
 $lightred: rgba(240, 78, 64, 0.7);
 $green: rgb(105, 190, 130);
 $lightgreen: rgba(105, 190, 130, 0.8);
+$greygreen: rgb(102, 178, 178);
 $blue: rgb(49, 180, 231);
+$lightblue: rgba(46, 149, 190, 0.5);
 $grey: rgb(90, 85, 85);
 
 * {
   margin: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: $lightblue;
 }
 
 button {

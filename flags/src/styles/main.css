@@ -12,6 +12,10 @@
           box-sizing: border-box;
 }
 
+body {
+  background-color: rgba(46, 149, 190, 0.5);
+}
+
 button {
   color: whitesmoke;
   background-color: #31b4e7;
@@ -194,9 +198,10 @@ input {
 }
 
 .header {
-  height: 35vh;
+  height: 30vh;
   width: 100%;
   padding: 0 10vw;
+  overflow: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -220,7 +225,6 @@ input {
 }
 
 .header__title {
-  padding-top: 3vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -229,7 +233,7 @@ input {
       -ms-flex-direction: row;
           flex-direction: row;
   font-family: "Pangolin", cursive;
-  font-size: 2em;
+  font-size: 3.2vw;
 }
 
 .header__title span {
@@ -258,14 +262,13 @@ input {
 .header__subtitle {
   padding: 1vh 0;
   color: #e6fafa;
-  font-size: 1.8em;
+  font-size: 1.6vw;
   font-weight: 700;
 }
 
 .header__instructions {
   width: 80%;
-  padding: 1vh 0;
-  font-size: 1em;
+  font-size: 1vw;
   font-weight: 500;
 }
 
@@ -439,7 +442,7 @@ ul.react-autocomplete-input > li {
 }
 
 .input {
-  height: 40vh;
+  height: 45vh;
   width: 100vw;
   padding: 0 2vw;
   display: -ms-grid;
@@ -672,7 +675,7 @@ ul.react-autocomplete-input > li {
 .input__btn {
   font-family: "Ubuntu", sans-serif;
   padding: 0.5%;
-  margin: 0.5%;
+  margin: 0 0.5%;
 }
 
 .input__btn--expand {
@@ -805,7 +808,6 @@ ul.react-autocomplete-input > li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(46, 149, 190, 0.5);
   font-family: "Comfortaa", cursive;
   font-weight: 700;
   color: #5a5555;
