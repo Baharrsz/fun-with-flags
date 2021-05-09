@@ -51,7 +51,7 @@ export default function UserInput(props) {
           Give Up
         </button>
         <button
-          className="input__btn input__btn--rest"
+          className="input__btn input__btn--reset"
           type="button"
           onClick={handleReset}
         >

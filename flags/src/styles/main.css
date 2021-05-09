@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap");
 * {
   margin: 0;
   -webkit-box-sizing: border-box;
@@ -13,7 +14,7 @@
 
 button {
   color: whitesmoke;
-  background-color: #00b7ff;
+  background-color: #31b4e7;
   border: none;
   border-radius: 3px;
 }
@@ -295,13 +296,32 @@ input {
   -ms-grid-column-span: 3;
   grid-area: announce;
   text-align: center;
-  font-family: "Monoton";
-  color: #f1ec9f;
-  text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  font-family: "Pangolin", cursive;
+  text-shadow: 0 0 0 rgba(50, 50, 50, 0.3);
 }
 
 .announce__final {
-  color: #f1e323;
+  font-size: 2em;
+}
+
+.announce__final--yes {
+  color: #69be82;
+}
+
+.announce__final--no {
+  color: #f04e40;
+}
+
+.announce__feature {
+  font-size: 1.5em;
+}
+
+.announce__feature--yes {
+  color: rgba(105, 190, 130, 0.8);
+}
+
+.announce__feature--no {
+  color: rgba(240, 78, 64, 0.7);
 }
 
 .announce__animation--final {
@@ -346,9 +366,17 @@ input {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   justify-self: end;
-  font-family: "Monoton";
-  font-size: 0.8em;
+  font-family: "New Tegomin", serif;
+  font-size: 1em;
+  text-shadow: 0 0 10px rgba(50, 50, 50, 0.3);
+}
+
+.score span {
+  font-size: 1.2em;
 }
 
 .score--current-score {
@@ -423,7 +451,7 @@ ul.react-autocomplete-input > li {
       grid-template-areas: "main main" "features options" "btns btns";
   -webkit-column-gap: 2vw;
           column-gap: 2vw;
-  row-gap: 1vh;
+  row-gap: 2vh;
   justify-items: center;
   font-family: "Comfortaa", cursive;
   font-size: 0.8em;
@@ -452,8 +480,8 @@ ul.react-autocomplete-input > li {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border: 1px solid rgba(230, 230, 230, 0.35);
   border-radius: 2vw;
+  border: 1px solid rgba(230, 230, 230, 0.35);
   background-color: rgba(230, 230, 230, 0.35);
   -webkit-box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
           box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
@@ -477,15 +505,16 @@ ul.react-autocomplete-input > li {
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 1vh;
-  background-color: rgba(0, 135, 190, 0.25);
-  -webkit-box-shadow: 0 0 10px rgba(0, 135, 190, 0.25);
-          box-shadow: 0 0 10px rgba(0, 135, 190, 0.25);
+  border: 1px solid rgba(230, 230, 230, 0.35);
+  background-color: rgba(230, 230, 230, 0.35);
+  -webkit-box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
+          box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
   font-weight: 700;
   font-size: 1.2em;
 }
 
-.input__section--country input {
-  border: none;
+.input__section--country button {
+  background-color: #fad900;
 }
 
 .input__section--btns {
@@ -535,8 +564,20 @@ ul.react-autocomplete-input > li {
           align-items: center;
 }
 
+.input__subsection--options button {
+  background-color: #69be82;
+}
+
+.input__subsection--language button {
+  background-color: #f04e40;
+}
+
 .input__subsection--currency {
   margin-bottom: 3vh;
+}
+
+.input__subsection--currency button {
+  background-color: #31b4e7;
 }
 
 .input__written-input {
@@ -592,7 +633,7 @@ ul.react-autocomplete-input > li {
 .input__text--or {
   margin-top: 1vh;
   font-family: "Freckle Face", cursive;
-  color: #00b7ff;
+  color: #31b4e7;
   font-size: 2em;
 }
 
@@ -638,6 +679,15 @@ ul.react-autocomplete-input > li {
   width: 100%;
   padding: 3%;
   margin: 2vh 0;
+  background-color: #69be82;
+}
+
+.input__btn--giveup {
+  background-color: #f04e40;
+}
+
+.input__btn--reset {
+  background-color: #31b4e7;
 }
 
 .celebration {
@@ -683,9 +733,9 @@ ul.react-autocomplete-input > li {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   border-radius: 2vw;
-  background-color: #f1efd9;
-  background-image: url("../assets/celebration.svg");
-  background-size: 50%;
+  background-color: #f8f5d3;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.2))), url("../assets/celebration.svg");
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("../assets/celebration.svg");
   background-repeat: no-repeat;
   background-position: center;
   -webkit-animation: celebration 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s 1 normal none;
@@ -756,6 +806,8 @@ ul.react-autocomplete-input > li {
           align-items: center;
   background-color: rgba(46, 149, 190, 0.5);
   font-family: "Comfortaa", cursive;
+  font-weight: 700;
+  color: #5a5555;
 }
 
 .content {

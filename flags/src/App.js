@@ -214,7 +214,7 @@ class App extends Component {
     if (isCorrect) {
       this.setState({
         announce: "Yes",
-        announceClass: announceClassName("feature", "yest"),
+        announceClass: announceClassName("feature", "yes"),
       });
     } else
       this.setState({

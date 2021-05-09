@@ -17,12 +17,30 @@
   grid-area: announce;
 
   text-align: center;
-  font-family: "Monoton";
-  color: rgb(241, 236, 159);
-  text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  font-family: "Pangolin", cursive;
+  text-shadow: 0 0 0 rgba(50, 50, 50, 0.3);
 
   &__final {
-    color: rgba(241, 227, 35, 1);
+    font-size: 2em;
+
+    &--yes {
+      color: $green;
+    }
+    &--no {
+      color: $red;
+    }
+  }
+
+  &__feature {
+    font-size: 1.5em;
+
+    &--yes {
+      color: $lightgreen;
+    }
+
+    &--no {
+      color: $lightred;
+    }
   }
 
   &__animation {
@@ -60,10 +78,16 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   justify-self: end;
 
-  font-family: "Monoton";
-  font-size: 0.8em;
+  font-family: "New Tegomin", serif;
+  font-size: 1em;
+  text-shadow: 0 0 10px rgba(50, 50, 50, 0.3);
+
+  & span {
+    font-size: 1.2em;
+  }
 
   &--current-score {
     grid-area: score-c;
