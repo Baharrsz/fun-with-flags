@@ -565,7 +565,7 @@ ul.react-autocomplete-input > li {
 }
 
 .input__subsection--options button {
-  background-color: #69be82;
+  background-color: #fad900;
 }
 
 .input__subsection--language button {
@@ -717,7 +717,7 @@ ul.react-autocomplete-input > li {
 }
 
 .dialogue {
-  width: 50%;
+  width: 40%;
   height: 50%;
   z-index: 3;
   display: -webkit-box;
@@ -738,6 +738,7 @@ ul.react-autocomplete-input > li {
   background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("../assets/celebration.svg");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 100%, 50%;
   -webkit-animation: celebration 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s 1 normal none;
           animation: celebration 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s 1 normal none;
 }
