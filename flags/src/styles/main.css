@@ -6,6 +6,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 * {
   margin: 0;
   -webkit-box-sizing: border-box;
@@ -13,7 +14,7 @@
 }
 
 body {
-  background-color: rgba(46, 149, 190, 0.5);
+  background-color: rgba(87, 179, 216, 0.5);
 }
 
 button {
@@ -114,10 +115,10 @@ input {
     color: #a13e3e;
   }
   to {
-    -webkit-transform: translate(0, calc(11vh * 2));
-            transform: translate(0, calc(11vh * 2));
+    -webkit-transform: translate(0, calc(21vh / 3 + 1em));
+            transform: translate(0, calc(21vh / 3 + 1em));
     color: #a13e3e;
-    opacity: 0.3;
+    opacity: 0.2;
   }
 }
 
@@ -128,10 +129,10 @@ input {
     color: #a13e3e;
   }
   to {
-    -webkit-transform: translate(0, calc(11vh * 2));
-            transform: translate(0, calc(11vh * 2));
+    -webkit-transform: translate(0, calc(21vh / 3 + 1em));
+            transform: translate(0, calc(21vh / 3 + 1em));
     color: #a13e3e;
-    opacity: 0.3;
+    opacity: 0.2;
   }
 }
 
@@ -194,6 +195,28 @@ input {
   }
   to {
     opacity: 0;
+  }
+}
+
+@-webkit-keyframes show-options {
+  from {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  to {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+
+@keyframes show-options {
+  from {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  to {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
   }
 }
 
@@ -280,13 +303,11 @@ input {
   height: 25vh;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 3vh 11vh 11vh;
-      grid-template-rows: 3vh 11vh 11vh;
+  -ms-grid-rows: 4vh (calc(21vh / 3))[3];
+      grid-template-rows: 4vh repeat(3, calc(21vh / 3));
   -ms-grid-columns: 1fr auto 1fr;
       grid-template-columns: 1fr auto 1fr;
-      grid-template-areas: "announce announce announce" "guesses flag score-c" ". flag score-t";
-  -webkit-column-gap: 2vw;
-          column-gap: 2vw;
+      grid-template-areas: "announce announce announce" ". flag score-c" "guesses flag ." ". flag score-t";
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -320,11 +341,11 @@ input {
 }
 
 .announce__feature--yes {
-  color: rgba(105, 190, 130, 0.8);
+  color: rgba(105, 190, 130, 0.85);
 }
 
 .announce__feature--no {
-  color: rgba(240, 78, 64, 0.7);
+  color: rgba(240, 78, 64, 0.85);
 }
 
 .announce__animation--final {
@@ -338,23 +359,37 @@ input {
 }
 
 .flag {
-  height: 18vh;
+  width: calc(339 / 132 * 21vh);
+  height: 21vh;
   -ms-grid-row: 2;
-  -ms-grid-row-span: 2;
+  -ms-grid-row-span: 3;
   -ms-grid-column: 2;
   grid-area: flag;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.flag__img {
+  height: 90%;
   -webkit-box-shadow: 0 0 10px gray;
           box-shadow: 0 0 10px gray;
 }
 
 .flag__animation--appear {
-  -webkit-animation: flag-appear 1s ease-in-out 0s 1 normal none;
-          animation: flag-appear 1s ease-in-out 0s 1 normal none;
+  -webkit-animation: flag-appear 1.5s ease-in-out 0s 1 normal none;
+          animation: flag-appear 1.5s ease-in-out 0s 1 normal none;
 }
 
 .flag__animation--disappear {
-  -webkit-animation: flag-disappear 2s ease-in-out 1s 1 normal none;
-          animation: flag-disappear 2s ease-in-out 1s 1 normal none;
+  -webkit-animation: flag-disappear 1s ease-in-out 0.5s 1 normal forwards;
+          animation: flag-disappear 1s ease-in-out 0.5s 1 normal forwards;
 }
 
 .score {
@@ -366,20 +401,18 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  justify-self: end;
-  font-family: "New Tegomin", serif;
+  font-family: "Fredoka One", cursive;
   font-size: 1em;
-  text-shadow: 0 0 10px rgba(50, 50, 50, 0.3);
 }
 
 .score span {
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
 .score--current-score {
@@ -389,12 +422,19 @@ input {
   -ms-flex-item-align: end;
       -ms-grid-row-align: end;
       align-self: end;
+  -ms-grid-column-align: start;
+      justify-self: start;
 }
 
 .score--total-score {
-  -ms-grid-row: 3;
+  -ms-grid-row: 4;
   -ms-grid-column: 3;
   grid-area: score-t;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+  -ms-grid-column-align: start;
+      justify-self: start;
   letter-spacing: 0.1em;
 }
 
@@ -404,16 +444,14 @@ input {
 }
 
 .score--correct-guesses {
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: guesses;
-  -ms-flex-item-align: end;
-      -ms-grid-row-align: end;
-      align-self: end;
-}
-
-.score__label {
-  width: 100%;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .score__content {
@@ -484,10 +522,8 @@ ul.react-autocomplete-input > li {
       -ms-flex-pack: justify;
           justify-content: space-between;
   border-radius: 2vw;
-  border: 1px solid rgba(230, 230, 230, 0.35);
-  background-color: rgba(230, 230, 230, 0.35);
-  -webkit-box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
-          box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
+  -webkit-box-shadow: 0 0 15px rgba(180, 180, 180, 0.6);
+          box-shadow: 0 0 15px rgba(180, 180, 180, 0.6);
 }
 
 .input__section--options {
@@ -508,10 +544,8 @@ ul.react-autocomplete-input > li {
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 1vh;
-  border: 1px solid rgba(230, 230, 230, 0.35);
-  background-color: rgba(230, 230, 230, 0.35);
-  -webkit-box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
-          box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
+  -webkit-box-shadow: 0 0 15px rgba(150, 150, 150, 0.8);
+          box-shadow: 0 0 15px rgba(150, 150, 150, 0.8);
   font-weight: 700;
   font-size: 1.2em;
 }
@@ -555,6 +589,13 @@ ul.react-autocomplete-input > li {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.input__subsection--options-guess {
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-animation: show-options 0.3s ease-in-out 0s 1 normal none;
+          animation: show-options 0.3s ease-in-out 0s 1 normal none;
 }
 
 .input__subsection--options {
@@ -603,6 +644,7 @@ ul.react-autocomplete-input > li {
 .input__written-input span input {
   height: 2.5vh;
   width: 15vw;
+  margin-right: 1vh;
   border-radius: 3px;
 }
 
@@ -622,6 +664,8 @@ ul.react-autocomplete-input > li {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -ms-flex-negative: 3;
+      flex-shrink: 3;
 }
 
 .input__title {
@@ -660,7 +704,6 @@ ul.react-autocomplete-input > li {
 .input__submitBtn {
   width: 2.5vh;
   height: 2.5vh;
-  margin-left: 1vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -670,6 +713,8 @@ ul.react-autocomplete-input > li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   background-image: url("../assets/enter-icon.svg");
   background-size: cover;
 }
@@ -739,8 +784,8 @@ ul.react-autocomplete-input > li {
       justify-content: space-around;
   border-radius: 2vw;
   background-color: #f8f5d3;
-  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.2))), url("../assets/celebration.svg");
-  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("../assets/celebration.svg");
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.6)), to(rgba(255, 255, 255, 0.6))), url("../assets/celebration.svg");
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url("../assets/celebration.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%, 50%;

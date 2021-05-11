@@ -19,7 +19,14 @@ function FeaturesSection({ handleSubmit, inputVal, handleInputChange }) {
       <FeaturesInstructions />
       <Radio
         type="continent"
-        optionNames={["Asia", "Africa", "Americas", "Europe", "Oceania"]}
+        optionNames={[
+          "Asia",
+          "Africa",
+          "Americas",
+          "Europe",
+          "Oceania",
+          "Polar",
+        ]}
         handleSubmit={handleSubmit}
       />
       <GuessSection

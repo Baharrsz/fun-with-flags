@@ -64,7 +64,7 @@ function OptionsGuess(props) {
   return !display ? (
     <></>
   ) : (
-    <div className="input__subsection">
+    <div className="input__subsection input__subsection--options-guess">
       <Radio
         type="country"
         optionNames={optionsArr}

@@ -24,11 +24,8 @@ export default function Display(props) {
         extraClass={announceClass}
         removeClass={removeAnnounceClass}
       />
-      <img
-        className={`display__item flag ${flagClass}`}
-        src={src}
-        alt="flag"
-      ></img>
+
+      <Flag src={src} flagClass={flagClass} />
 
       <Score
         score={current}
@@ -60,6 +57,18 @@ function Announce({ announce, extraClass, removeClass }) {
       onAnimationEnd={removeClass}
     >
       {announce}
+    </div>
+  );
+}
+
+function Flag({ src, flagClass }) {
+  return (
+    <div className="flag">
+      <img
+        className={`display__item flag__img ${flagClass}`}
+        src={src}
+        alt="flag"
+      ></img>
     </div>
   );
 }

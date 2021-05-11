@@ -12,7 +12,12 @@ class App extends Component {
     this.wrongGuessScore = -10;
     this.useHintScore = -5;
     this.seeOptionsScore = -20;
-    this.animationClassName = ["animation--increment", "animation--move"];
+    this.scoreAnimationClassName = ["animation--increment", "animation--move"];
+    this.flagAnimationClassName = [
+      "flag__animation--appear",
+      "flag__animation--disappear",
+    ];
+    this.optionsAnimationClassName = "input__show-options";
     this.newGameDelay = 2000;
   }
 
@@ -32,6 +37,7 @@ class App extends Component {
     countClass: "",
     displayCelebration: false,
     flagClass: "",
+    optionsClass: "",
   };
   render() {
     let inputValObj = {
@@ -116,7 +122,7 @@ class App extends Component {
               country: country,
               announce: null,
               currentScore: 100,
-              flagClass: "flag__animation--appear",
+              flagClass: this.flagAnimationClassName[0],
             }),
           this.newGameDelay
         );
@@ -164,7 +170,7 @@ class App extends Component {
     const increment = isMultipleAnswer ? 0 : this.wrongGuessScore;
     const animationClassName = isMultipleAnswer
       ? ""
-      : this.animationClassName[0];
+      : this.scoreAnimationClassName[0];
 
     //Checking if the submitted answer equals the country's name or alternative spellings
     //(index 0 of altSpellings is excluded because it's a two letter representation of the country's name)
@@ -176,12 +182,11 @@ class App extends Component {
     ) {
       this.setState(
         {
-          currentScoreClass: this.animationClassName[1],
+          currentScoreClass: this.scoreAnimationClassName[1],
           announce: "Yes!",
           announceClass: announceClassName("final", "yes"),
           guessed: [...this.state.guessed, this.state.country.name],
-          countClass: this.animationClassName[0],
-          flagClass: "flag__animation--disappear",
+          flagClass: this.flagAnimationClassName[1],
         },
         () => {
           //Showing celebration if all countries have been played
@@ -231,6 +236,7 @@ class App extends Component {
       countryInputVal: "",
       languageInputVal: "",
       currencyInputVal: "",
+      flagClass: this.flagAnimationClassName[1],
     });
     this.getCountry();
   };
@@ -261,7 +267,7 @@ class App extends Component {
   changeCurrentScore = (increment) => {
     this.setState((state) => ({
       currentScore: state.currentScore + increment,
-      currentScoreClass: this.animationClassName[0],
+      currentScoreClass: this.scoreAnimationClassName[0],
     }));
   };
 
@@ -276,7 +282,8 @@ class App extends Component {
       this.setState({
         currentScoreClass: "",
         totalScore: this.state.totalScore + this.state.currentScore,
-        totalScoreClass: this.animationClassName[0],
+        totalScoreClass: this.scoreAnimationClassName[0],
+        countClass: this.scoreAnimationClassName[0],
       });
     }
     //In the middle of the game, current score got 'incremented'
@@ -295,6 +302,10 @@ class App extends Component {
 
   removeScoreClass = () => this.setState({ currentScoreClass: "" });
 
+  // handleFlagAnimationStop = (src) => {
+  //   if (this.state.flagClass.includes("disappear") && this.state.src !== src)
+  //     this.setState({ flagClass: this.flagAnimationClassName[0] });
+  // };
   hideCelebration = () => this.setState({ displayCelebration: false });
 }
 
