@@ -47,7 +47,7 @@ ul.react-autocomplete-input {
       // border: 1px solid rgba(230, 230, 230, 0.35);
 
       // background-color: rgba(230, 230, 230, 0.35);
-      box-shadow: 0 0 15px rgba(180, 180, 180, 0.6);
+      box-shadow: 0 0 15px rgba(180, 180, 180, 0.4);
     }
 
     &--options {
@@ -63,7 +63,7 @@ ul.react-autocomplete-input {
       // border: 1px solid rgba(230, 230, 230, 0.35);
 
       // background-color: rgba(230, 230, 230, 0.35);
-      box-shadow: 0 0 15px rgba(150, 150, 150, 0.8);
+      box-shadow: 0 0 15px rgba(150, 150, 150, 0.6);
 
       font-weight: 700;
       font-size: 1.2em;
@@ -136,7 +136,8 @@ ul.react-autocomplete-input {
         width: $input-width;
         margin-right: 1vh;
 
-        border-radius: 3px;
+        border-radius: 4px;
+        border: lightgray 1px solid;
       }
     }
   }
@@ -161,9 +162,10 @@ ul.react-autocomplete-input {
     &--or {
       margin-top: 1vh;
 
-      font-family: "Freckle Face", cursive;
+      font-family: "Pangolin", cursive;
+      // "Freckle Face", cursive;
       color: $blue;
-      font-size: 2em;
+      font-size: 2.2em;
     }
   }
 
