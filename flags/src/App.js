@@ -5,6 +5,7 @@ import UserInput from "./components/UserInput";
 import Header from "./components/Header";
 import Celebration from "./components/Celebration";
 import Loading from "./components/Loading";
+import Instructions from "./components/Instructions";
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
     displayCelebration: false,
     flagClass: "",
     optionsClass: "",
+    displayInstructions: false,
   };
   render() {
     let inputValObj = {
@@ -49,7 +51,11 @@ class App extends Component {
     else {
       return (
         <>
-          <Header />
+          <Header toggleInstructions={this.toggleInstructions} />
+          <Instructions
+            display={this.state.displayInstructions}
+            toggle={this.toggleInstructions}
+          />
           <div className="content">
             <Display
               announce={this.state.announce}
@@ -302,11 +308,10 @@ class App extends Component {
 
   removeScoreClass = () => this.setState({ currentScoreClass: "" });
 
-  // handleFlagAnimationStop = (src) => {
-  //   if (this.state.flagClass.includes("disappear") && this.state.src !== src)
-  //     this.setState({ flagClass: this.flagAnimationClassName[0] });
-  // };
   hideCelebration = () => this.setState({ displayCelebration: false });
+
+  toggleInstructions = () =>
+    this.setState({ displayInstructions: !this.state.displayInstructions });
 }
 
 function announceClassName(type, yOrN) {

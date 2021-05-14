@@ -10,12 +10,12 @@ ul.react-autocomplete-input {
 }
 
 .input {
-  height: 45vh;
+  height: 48vh;
   width: 100vw;
   padding: 0 $input-padding;
 
   display: grid;
-  grid-template-rows: 1fr 3.5fr 0.5fr;
+  grid-template-rows: 1.5fr 3.5fr 1fr;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "main main"
@@ -41,7 +41,7 @@ ul.react-autocomplete-input {
     &--features,
     &--options {
       grid-area: features;
-      justify-content: space-between;
+      justify-content: space-evenly;
 
       border-radius: 2vw;
       // border: 1px solid rgba(230, 230, 230, 0.35);
@@ -80,6 +80,7 @@ ul.react-autocomplete-input {
       display: flex;
       flex-direction: row;
       justify-content: center;
+      align-items: center;
     }
   }
 
@@ -98,8 +99,6 @@ ul.react-autocomplete-input {
     }
 
     &--options {
-      width: 45vw;
-
       display: flex;
       align-items: center;
 

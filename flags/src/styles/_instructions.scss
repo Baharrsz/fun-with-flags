@@ -1,0 +1,33 @@
+.instructions {
+  width: 100%;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+
+  font-size: 1em;
+  font-weight: 100;
+
+  &__background {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__main {
+    width: 30vw;
+    padding: 2vh 2vh;
+
+    position: fixed;
+    right: 2vw;
+    top: 5.5vw;
+
+    border-radius: 1vh;
+
+    background-color: whitesmoke;
+    color: $grey;
+  }
+
+  &__text {
+    padding: 5px 0;
+  }
+}

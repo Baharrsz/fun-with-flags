@@ -8,12 +8,13 @@
 @import url("https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 
-$input-padding: 2vw;
+$input-padding: 4vw;
 $column-gap: 2vw;
 $row-gap: 2vh;
 $btn-width: 2.5vh;
 $input-width: 15vw;
-$flag-height: 21vh;
+$announce-height: 4vh;
+$flag-height: 23vh;
 //Width based on Qatar's flag which is the widest one
 $flag-width: calc(339 / 132 * #{$flag-height});
 

@@ -1,5 +1,5 @@
 .display {
-  height: 25vh;
+  height: 27vh;
 
   display: grid;
   grid-template-rows: 4vh repeat(3, calc(#{$flag-height} / 3));
@@ -21,7 +21,7 @@
   text-shadow: 0 0 0 rgba(50, 50, 50, 0.3);
 
   &__final {
-    font-size: 2em;
+    font-size: 1.7em;
 
     &--yes {
       color: $green;
@@ -128,7 +128,7 @@
 
   &__animation {
     &--increment {
-      animation: score-increment 0.3s ease-in-out 0.3s 2 alternate none;
+      animation: score-increment 0.3s ease-in-out 0.3s 2 alternate forwards;
     }
 
     &--move {
