@@ -861,17 +861,32 @@ ul.react-autocomplete-input > li {
 
 .instructions__main {
   width: 30vw;
-  padding: 2vh 2vh;
+  padding: 3vh 3vh;
   position: fixed;
   right: 2vw;
   top: 5.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 1vh;
+  -webkit-box-shadow: 0 0 15px rgba(150, 150, 150, 0.6);
+          box-shadow: 0 0 15px rgba(150, 150, 150, 0.6);
   background-color: whitesmoke;
   color: #5a5555;
 }
 
 .instructions__text {
   padding: 5px 0;
+  text-align: center;
+  font-size: 0.9em;
+  line-height: 1.3em;
 }
 
 #root {
