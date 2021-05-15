@@ -25,7 +25,7 @@ class App extends Component {
   state = {
     countriesArray: undefined,
     country: undefined,
-    guessed: JSON.parse(localStorage.guessed) || [],
+    guessed: (localStorage.guessed && JSON.parse(localStorage.guessed)) || [],
     currentScore: 100,
     currentScoreClass: "",
     totalScore: 0,
@@ -123,7 +123,7 @@ class App extends Component {
       .get(`https://restcountries.eu/rest/v2/name/${country}`)
       .then((response) => {
         country = response.data[0];
-        console.log(country);
+        // console.log(country);
         setTimeout(
           () =>
             this.setState({
