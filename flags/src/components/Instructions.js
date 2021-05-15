@@ -11,14 +11,15 @@ export default function Instructions({ display, toggle }) {
           You have 100 points at each stage and will lose 10 points for each
           wrong answer. You'll go to the next level when you guess correctly.
         </p>
+        <p className="instructions__text">Negative scores are also possible.</p>
+
         <p className="instructions__text">
           If you are sure of your guess, yet it's not correct, it might be
           because the official name is different, or that the answer is another
           country which shares the same flag.
         </p>
-        <p className="instructions__text">Negative scores are also possible.</p>
         <p className="instructions__text">
-          The games you previously played are remembered until you reset the
+          The games you previously played will be remembered until you reset the
           game or clear your browser's cache.
         </p>
       </div>
