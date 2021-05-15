@@ -17,6 +17,10 @@ export default function Instructions({ display, toggle }) {
           country which shares the same flag.
         </p>
         <p className="instructions__text">Negative scores are also possible.</p>
+        <p className="instructions__text">
+          The games you previously played are remembered until you reset the
+          game or clear your browser's cache.
+        </p>
       </div>
     </div>
   );

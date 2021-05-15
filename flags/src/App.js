@@ -25,7 +25,7 @@ class App extends Component {
   state = {
     countriesArray: undefined,
     country: undefined,
-    guessed: [],
+    guessed: JSON.parse(localStorage.guessed) || [],
     currentScore: 100,
     currentScoreClass: "",
     totalScore: 0,
@@ -47,6 +47,8 @@ class App extends Component {
       language: this.state.languageInputVal,
       currency: this.state.currencyInputVal,
     };
+    if (this.state.guessed.length === 0) localStorage.setItem("guessed", []);
+
     if (!this.state.country) return <Loading />;
     else {
       return (
@@ -197,6 +199,9 @@ class App extends Component {
           flagClass: this.flagAnimationClassName[1],
         },
         () => {
+          //Updating the guessed country to local storage
+          localStorage.setItem("guessed", JSON.stringify(this.state.guessed));
+
           //Showing celebration if all countries have been played
           if (this.state.guessed.length === this.state.countriesArray.length)
             this.setState({ displayCelebration: true });
@@ -263,6 +268,7 @@ class App extends Component {
       displayCelebration: false,
     });
     this.getCountry();
+    localStorage.setItem("guessed", "[]");
   };
 
   handleInputChange = (change, type) => {
