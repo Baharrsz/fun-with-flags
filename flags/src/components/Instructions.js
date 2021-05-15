@@ -20,7 +20,7 @@ export default function Instructions({ display, toggle }) {
         </p>
         <p className="instructions__text">
           The games you previously played will be remembered until you reset the
-          game or clear your browser's cache.
+          game or clear your browser's cache before refreshing the website.
         </p>
       </div>
     </div>
