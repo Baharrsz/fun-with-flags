@@ -50,7 +50,7 @@ class App extends Component {
     };
     if (this.state.guessed.length === 0) localStorage.setItem("guessed", []);
 
-    if (!this.state.countriesArray) return <Loading />;
+    if (!this.state.country) return <Loading />;
     else {
       return (
         <>
@@ -105,6 +105,7 @@ class App extends Component {
         //response.data format [{name: country_name}]
         let countriesArray = response.data.map((countryObj) => countryObj.name);
         this.setState({ countriesArray: countriesArray });
+        console.log("from mount", this.state.country);
         if (!this.state.country) this.getCountry();
       });
   }
@@ -207,6 +208,7 @@ class App extends Component {
         },
         () => {
           //Updating the guessed country to local storage
+          localStorage.removeItem("country");
           localStorage.setItem("guessed", JSON.stringify(this.state.guessed));
 
           //Showing celebration if all countries have been played
