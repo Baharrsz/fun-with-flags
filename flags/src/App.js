@@ -24,11 +24,12 @@ class App extends Component {
 
   state = {
     countriesArray: undefined,
-    country: undefined,
+    country:
+      (localStorage.country && JSON.parse(localStorage.country)) || undefined,
     guessed: (localStorage.guessed && JSON.parse(localStorage.guessed)) || [],
-    currentScore: 100,
+    currentScore: Number(localStorage.currentScore) || 100,
     currentScoreClass: "",
-    totalScore: 0,
+    totalScore: Number(localStorage.totalScore) || 0,
     totalScoreClass: "",
     announce: null,
     announceClass: "",
@@ -49,7 +50,7 @@ class App extends Component {
     };
     if (this.state.guessed.length === 0) localStorage.setItem("guessed", []);
 
-    if (!this.state.country) return <Loading />;
+    if (!this.state.countriesArray) return <Loading />;
     else {
       return (
         <>
@@ -104,7 +105,7 @@ class App extends Component {
         //response.data format [{name: country_name}]
         let countriesArray = response.data.map((countryObj) => countryObj.name);
         this.setState({ countriesArray: countriesArray });
-        this.getCountry();
+        if (!this.state.country) this.getCountry();
       });
   }
 
@@ -126,12 +127,18 @@ class App extends Component {
         // console.log(country);
         setTimeout(
           () =>
-            this.setState({
-              country: country,
-              announce: null,
-              currentScore: 100,
-              flagClass: this.flagAnimationClassName[0],
-            }),
+            this.setState(
+              {
+                country: country,
+                announce: null,
+                currentScore: 100,
+                flagClass: this.flagAnimationClassName[0],
+              },
+              () => {
+                localStorage.setItem("currentScore", this.state.currentScore);
+                localStorage.setItem("country", JSON.stringify(country));
+              }
+            ),
           this.newGameDelay
         );
       });
@@ -211,12 +218,15 @@ class App extends Component {
         }
       );
     } else
-      this.setState({
-        currentScore: this.state.currentScore + increment,
-        currentScoreClass: animationClassName,
-        announce: "Nope!",
-        announceClass: announceClassName("final", "no"),
-      });
+      this.setState(
+        {
+          currentScore: this.state.currentScore + increment,
+          currentScoreClass: animationClassName,
+          announce: "Nope!",
+          announceClass: announceClassName("final", "no"),
+        },
+        () => localStorage.setItem("currentScore", this.state.currentScore)
+      );
   };
 
   handleFeatureGuess = (type, submitted) => {
@@ -243,14 +253,20 @@ class App extends Component {
   };
 
   handleGiveup = () => {
-    this.setState({
-      totalScore: this.state.totalScore + this.useHintScore,
-      currentScore: 100,
-      countryInputVal: "",
-      languageInputVal: "",
-      currencyInputVal: "",
-      flagClass: this.flagAnimationClassName[1],
-    });
+    this.setState(
+      {
+        totalScore: this.state.totalScore + this.useHintScore,
+        currentScore: 100,
+        countryInputVal: "",
+        languageInputVal: "",
+        currencyInputVal: "",
+        flagClass: this.flagAnimationClassName[1],
+      },
+      () => {
+        localStorage.setItem("currentScore", this.state.currentScore);
+        localStorage.setItem("totalScore", this.state.totalScore);
+      }
+    );
     this.getCountry();
   };
 
@@ -269,6 +285,8 @@ class App extends Component {
     });
     this.getCountry();
     localStorage.setItem("guessed", "[]");
+    localStorage.setItem("currentScore", 0);
+    localStorage.setItem("totalScore", 0);
   };
 
   handleInputChange = (change, type) => {
@@ -279,10 +297,13 @@ class App extends Component {
   };
 
   changeCurrentScore = (increment) => {
-    this.setState((state) => ({
-      currentScore: state.currentScore + increment,
-      currentScoreClass: this.scoreAnimationClassName[0],
-    }));
+    this.setState(
+      (state) => ({
+        currentScore: state.currentScore + increment,
+        currentScoreClass: this.scoreAnimationClassName[0],
+      }),
+      () => localStorage.setItem("currentScore", this.state.currentScore)
+    );
   };
 
   removeAnnounceClass = () => {
@@ -299,11 +320,14 @@ class App extends Component {
 
     //Game has finished and current score 'moved' and got added to total score
     if (this.state.currentScoreClass.includes("move")) {
-      this.setState({
-        currentScoreClass: "",
-        totalScore: this.state.totalScore + this.state.currentScore,
-        totalScoreClass: this.scoreAnimationClassName[0],
-      });
+      this.setState(
+        {
+          currentScoreClass: "",
+          totalScore: this.state.totalScore + this.state.currentScore,
+          totalScoreClass: this.scoreAnimationClassName[0],
+        },
+        () => localStorage.setItem("totalScore", this.state.totalScore)
+      );
     }
     //In the middle of the game, current score got 'incremented'
     if (this.state.currentScoreClass.includes("increment")) {

@@ -19,8 +19,8 @@ export default function Instructions({ display, toggle }) {
           country which shares the same flag.
         </p>
         <p className="instructions__text">
-          The games you previously played will be remembered until you reset the
-          game or clear your browser's cache before refreshing the website.
+          The current state of the game will be remembered even when you leave
+          the website (until you reset the game or clear your browser's cache.)
         </p>
       </div>
     </div>
