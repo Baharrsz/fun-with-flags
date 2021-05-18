@@ -50,7 +50,7 @@ class App extends Component {
     };
     if (this.state.guessed.length === 0) localStorage.setItem("guessed", []);
 
-    if (!this.state.country) return <Loading />;
+    if (!this.state.country || !this.state.countriesArray) return <Loading />;
     else {
       return (
         <>
