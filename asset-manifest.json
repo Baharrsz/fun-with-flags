@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/fun-with-flags/static/css/main.b20e4ebd.chunk.css",
+    "main.css": "/fun-with-flags/static/css/main.26f5d65f.chunk.css",
     "main.js": "/fun-with-flags/static/js/main.ccdeffb9.chunk.js",
     "main.js.map": "/fun-with-flags/static/js/main.ccdeffb9.chunk.js.map",
     "runtime-main.js": "/fun-with-flags/static/js/runtime-main.6c75c3c2.js",
@@ -10,7 +10,7 @@
     "static/js/2.b1dda70d.chunk.js.map": "/fun-with-flags/static/js/2.b1dda70d.chunk.js.map",
     "index.html": "/fun-with-flags/index.html",
     "static/css/2.7347eb6e.chunk.css.map": "/fun-with-flags/static/css/2.7347eb6e.chunk.css.map",
-    "static/css/main.b20e4ebd.chunk.css.map": "/fun-with-flags/static/css/main.b20e4ebd.chunk.css.map",
+    "static/css/main.26f5d65f.chunk.css.map": "/fun-with-flags/static/css/main.26f5d65f.chunk.css.map",
     "static/js/2.b1dda70d.chunk.js.LICENSE.txt": "/fun-with-flags/static/js/2.b1dda70d.chunk.js.LICENSE.txt",
     "static/media/main.css": "/fun-with-flags/static/media/world-map.20109413.svg",
     "static/media/loading.70b4daea.svg": "/fun-with-flags/static/media/loading.70b4daea.svg"
@@ -19,7 +19,7 @@
     "static/js/runtime-main.6c75c3c2.js",
     "static/css/2.7347eb6e.chunk.css",
     "static/js/2.b1dda70d.chunk.js",
-    "static/css/main.b20e4ebd.chunk.css",
+    "static/css/main.26f5d65f.chunk.css",
     "static/js/main.ccdeffb9.chunk.js"
   ]
 }
