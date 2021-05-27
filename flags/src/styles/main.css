@@ -329,7 +329,7 @@ input {
 }
 
 .announce__final--yes {
-  color: #3f7e44;
+  color: #4c9f38;
 }
 
 .announce__final--no {
@@ -341,7 +341,7 @@ input {
 }
 
 .announce__feature--yes {
-  color: rgba(63, 126, 68, 0.7);
+  color: rgba(76, 159, 56, 0.7);
 }
 
 .announce__feature--no {
