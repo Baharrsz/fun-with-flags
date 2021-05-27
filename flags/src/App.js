@@ -105,7 +105,6 @@ class App extends Component {
         //response.data format [{name: country_name}]
         let countriesArray = response.data.map((countryObj) => countryObj.name);
         this.setState({ countriesArray: countriesArray });
-        console.log("from mount", this.state.country);
         if (!this.state.country) this.getCountry();
       });
   }
