@@ -19,7 +19,7 @@ body {
 
 button {
   color: whitesmoke;
-  background-color: #31b4e7;
+  background-color: #0a97d9;
   border: none;
   border-radius: 3px;
 }
@@ -623,7 +623,7 @@ ul.react-autocomplete-input > li {
 }
 
 .input__subsection--currency button {
-  background-color: #31b4e7;
+  background-color: #0a97d9;
 }
 
 .input__written-input {
@@ -684,7 +684,7 @@ ul.react-autocomplete-input > li {
 .input__text--or {
   margin-top: 1vh;
   font-family: "Pangolin", cursive;
-  color: #31b4e7;
+  color: #fd6925;
   font-size: 2.2em;
 }
 
@@ -741,7 +741,7 @@ ul.react-autocomplete-input > li {
 }
 
 .input__btn--reset {
-  background-color: #31b4e7;
+  background-color: #0a97d9;
 }
 
 .celebration {
@@ -880,7 +880,7 @@ ul.react-autocomplete-input > li {
   -webkit-box-shadow: 0 0 15px rgba(150, 150, 150, 0.6);
           box-shadow: 0 0 15px rgba(150, 150, 150, 0.6);
   background-color: whitesmoke;
-  color: #5a5555;
+  color: #504b4b;
 }
 
 .instructions__text {
@@ -908,7 +908,7 @@ ul.react-autocomplete-input > li {
           justify-content: center;
   font-family: "Comfortaa", cursive;
   font-weight: 700;
-  color: #5a5555;
+  color: #504b4b;
 }
 
 .content {
