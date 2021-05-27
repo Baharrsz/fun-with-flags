@@ -14,7 +14,7 @@
 }
 
 body {
-  background-color: rgba(87, 179, 216, 0.5);
+  background-color: rgba(0, 158, 219, 0.6);
 }
 
 button {
@@ -237,7 +237,7 @@ input {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  background-image: url("../assets/header2.png");
+  background-image: url("../assets/header.svg");
   background-repeat: no-repeat;
   background-size: contain;
   text-align: center;
@@ -275,7 +275,7 @@ input {
 }
 
 .header__title--flags {
-  color: #69be82;
+  color: #56c02b;
   -webkit-transform: rotate(10deg);
           transform: rotate(10deg);
 }
@@ -329,7 +329,7 @@ input {
 }
 
 .announce__final--yes {
-  color: #69be82;
+  color: #56c02b;
 }
 
 .announce__final--no {
@@ -648,7 +648,8 @@ ul.react-autocomplete-input > li {
   width: 15vw;
   margin-right: 1vh;
   border-radius: 4px;
-  border: lightgray 1px solid;
+  -webkit-box-shadow: 0 0 10px rgba(150, 150, 150, 0.5);
+          box-shadow: 0 0 10px rgba(150, 150, 150, 0.5);
 }
 
 .input__options-group {
@@ -732,7 +733,7 @@ ul.react-autocomplete-input > li {
   width: 100%;
   padding: 3%;
   margin: 2vh 0;
-  background-color: #69be82;
+  background-color: #56c02b;
 }
 
 .input__btn--giveup {
